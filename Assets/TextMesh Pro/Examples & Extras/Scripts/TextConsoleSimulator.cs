@@ -62,9 +62,10 @@ namespace TMPro.Examples
                     hasTextChanged = false; 
                 }
 
-                if (visibleCount >= totalVisibleCharacters)
+                if (visibleCount > totalVisibleCharacters)
                 {
-                    yield return new WaitUntil(() => visibleCount < textInfo.characterCount);
+                    yield return new WaitForSeconds(1.0f);
+                    visibleCount = 0;
                 }
 
                 textComponent.maxVisibleCharacters = visibleCount; // How many characters should TextMeshPro display?
@@ -107,7 +108,7 @@ namespace TMPro.Examples
                 // Once the last character has been revealed, wait 1.0 second and start over.
                 if (visibleCount >= totalVisibleCharacters)
                 {
-                    yield return new WaitUntil( () => visibleCount < totalVisibleCharacters);
+                    yield return new WaitForSeconds(1.0f);
                 }
 
                 counter += 1;
