@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4696044313117899875
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8064944787672387849, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: m_Name
+      value: Door Side
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064944787672387860, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064944787672387860, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064944787672387863, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064944787672387863, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300004, guid: 9eb19909610c9a04a90d501cba799113, type: 3}
+    - target: {fileID: 8064944787672387862, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: sprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300004, guid: 9eb19909610c9a04a90d501cba799113, type: 3}
+    - target: {fileID: 8064944787672387862, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: sprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300002, guid: 9eb19909610c9a04a90d501cba799113, type: 3}
+    - target: {fileID: 8064944787672387861, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064944787672387861, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: m_Size.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064944787672387861, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: m_Size.y
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064944787415837352, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.195
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064944787415837352, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064944787415837355, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300004, guid: 978b8461688b0d14685dd3846aacb452, type: 3}
+    m_RemovedComponents:
+    - {fileID: 8064944787415837354, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 7cab4b1508ed40f4a848855821264397, type: 3}
