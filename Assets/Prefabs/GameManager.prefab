@@ -100,13 +100,59 @@ MonoBehaviour:
     playerData:
       health: 100
       level: 1
+      gun: 0
+      ammoInClip: 000000000000000000000000
+  guns:
+  - name: Pistol
+    bulletPrefab: {fileID: 6642465936463778590, guid: 4ae7a43e99d854747a1d6dcaef6a0678, type: 3}
+    RPS: 10
+    bulletVelocity: 25000
+    bulletDamage: 50
+    bulletAmount: 1
+    bulletSpread: 4
+    ammoPerClip: 16
+    reloadTime: 2
+    automatic: 0
+    shotShound: {fileID: 8300000, guid: 04c979c177a5cdc448f630bc9ab98e5d, type: 3}
+    reloadSound: {fileID: 0}
+    noAmmoSound: {fileID: 0}
+  - name: Shotgun
+    bulletPrefab: {fileID: 6642465936463778590, guid: 4ae7a43e99d854747a1d6dcaef6a0678, type: 3}
+    RPS: 5
+    bulletVelocity: 20000
+    bulletDamage: 10
+    bulletAmount: 5
+    bulletSpread: 10
+    ammoPerClip: 8
+    reloadTime: 2
+    automatic: 0
+    shotShound: {fileID: 8300000, guid: 817e60daf968c5546b04ea5084f47e64, type: 3}
+    reloadSound: {fileID: 0}
+    noAmmoSound: {fileID: 0}
+  - name: Assault Rifle
+    bulletPrefab: {fileID: 6642465936463778590, guid: 4ae7a43e99d854747a1d6dcaef6a0678, type: 3}
+    RPS: 15
+    bulletVelocity: 25000
+    bulletDamage: 30
+    bulletAmount: 1
+    bulletSpread: 5
+    ammoPerClip: 24
+    reloadTime: 2
+    automatic: 1
+    shotShound: {fileID: 8300000, guid: 1751f6553d4721245b0ab3c4a59da47a, type: 3}
+    reloadSound: {fileID: 0}
+    noAmmoSound: {fileID: 0}
   doors: []
   enemies: []
   cameras: []
   playerData:
     health: 100
     level: 0
+    gun: 0
+    ammoInClip: 000000000000000000000000
   saveData:
     playerData:
       health: 0
       level: 0
+      gun: 0
+      ammoInClip: 

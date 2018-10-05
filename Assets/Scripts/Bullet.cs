@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public LayerMask mask;
     public GameObject hitPrefab;
     int continues;
+    public int damage;
 
     private void Awake()
     {
@@ -23,8 +24,8 @@ public class Bullet : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity *= 0.9f;
             Vector3 inPoint = hit.point;
             Vector3 outPoint = Physics2D.Linecast(transform.position, lastPos, mask).point;
-            Instantiate(hitPrefab, inPoint, Quaternion.identity);
-            Instantiate(hitPrefab, outPoint, Quaternion.identity);
+            Instantiate(hitPrefab, inPoint, Quaternion.LookRotation(hit.normal));
+            Instantiate(hitPrefab, outPoint, Quaternion.LookRotation(-hit.normal));
             Debug.DrawLine(inPoint, outPoint, Color.green, 2);
             switch(hit.collider.tag)
             {

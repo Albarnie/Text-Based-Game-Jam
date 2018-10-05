@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8319404764074465289}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8319404764545895602}
@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8319404764246766994}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8319404765723253486}
@@ -313,8 +313,8 @@ SpriteMask:
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
-  m_FrontSortingOrder: 2
-  m_BackSortingOrder: 1
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: -2
   m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
 --- !u!1 &8319404765416997418
@@ -504,8 +504,9 @@ MonoBehaviour:
   gun:
     bulletPrefab: {fileID: 6642465936463778590, guid: 4ae7a43e99d854747a1d6dcaef6a0678, type: 3}
     RPS: 10
-    speed: 30000
-    damage: 0
+    bulletVelocity: 30000
+    bulletDamage: 0
+    bulletAmount: 0
     shotShound: {fileID: 8300000, guid: 6542cb6a25616414cb0656e510f96d9c, type: 3}
     reloadSound: {fileID: 0}
     noAmmoSound: {fileID: 0}

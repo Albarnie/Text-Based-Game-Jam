@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     [System.Serializable]
     public struct PlayerData
     {
-        public int health, level;
+        public int health, level, gun;
+        public int[] ammoInClip;
     }
 
     [System.Serializable]
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
     }
 
     public static GameManager manager;
+
     [Header("References")]
     public GameGUIManager guiManager;
     public EnemyManager enemyManager;
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Settings")]
     public SaveData initialData;
+    public Gun[] guns;
 
     [Header("Object Lists")]
     public List<Door> doors;
@@ -64,13 +67,20 @@ public class GameManager : MonoBehaviour
 
     public void Load ()
     {
-        BinaryFormatter bf = new BinaryFormatter();
-        FileStream file = File.Open(Application.persistentDataPath + "/Save.Ts", FileMode.Open);
-        saveData = (SaveData)bf.Deserialize(file);
-        file.Close();
+        if (File.Exists(Application.persistentDataPath + "/Save.Ts"))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/Save.Ts", FileMode.Open);
+            saveData = (SaveData)bf.Deserialize(file);
+            file.Close();
 
-        playerData = saveData.playerData;
-        StartCoroutine(GoToScene(saveData.playerData.level));
+            playerData = saveData.playerData;
+            StartCoroutine(GoToScene(saveData.playerData.level));
+        }
+        else
+        {
+            New();
+        }
     }
 
     public void New()
@@ -86,6 +96,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator GoToScene (int level)
     {
+        playerData.level = level;
         AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(level);
         while (sceneLoad.progress < 1)
         {
