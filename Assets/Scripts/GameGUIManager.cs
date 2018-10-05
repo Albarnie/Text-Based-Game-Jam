@@ -8,6 +8,7 @@ public class GameGUIManager : MonoBehaviour
     public GameObject worldNotify;
     public TextMeshProUGUI notifyText;
     Vector3 notifyPos;
+    public bool paused;
 
     private void Start()
     {
@@ -23,5 +24,39 @@ public class GameGUIManager : MonoBehaviour
     private void Update()
     {
         worldNotify.transform.position = Vector3.Slerp(worldNotify.transform.position, notifyPos, 5 * Time.deltaTime);
+        if (Input.GetKeyDown("escape") && paused)
+        {
+            UnPause();
+        }
+        else if (Input.GetKeyDown("escape"))
+        {
+            Pause();
+        }
+    }
+
+    public void Pause ()
+    {
+        paused = true;
+        GameManager.manager.menuManager.ChangeMenu(0);
+        Time.timeScale = 0;
+    }
+
+    public void UnPause()
+    {
+        paused = false;
+        GameManager.manager.menuManager.ChangeMenu(-1);
+        Time.timeScale = 1;
+    }
+
+    public void Save ()
+    {
+        GameManager.manager.Save();
+        UnPause();
+    }
+
+    public void MainMenu ()
+    {
+        UnPause();
+        StartCoroutine(GameManager.manager.GoToScene(0));
     }
 }

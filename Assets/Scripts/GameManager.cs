@@ -19,12 +19,15 @@ public class GameManager : MonoBehaviour
         public PlayerData playerData;
     }
 
-    [Header("References")]
     public static GameManager manager;
+    [Header("References")]
     public GameGUIManager guiManager;
     public EnemyManager enemyManager;
     public MenuManager menuManager;
     public ConsoleManager consoleManager;
+
+    [Header("Settings")]
+    public SaveData initialData;
 
     [Header("Object Lists")]
     public List<Door> doors;
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        SceneManager.sceneLoaded += OnLevelLoad;
     }
 
     public void Save ()
@@ -56,6 +60,42 @@ public class GameManager : MonoBehaviour
         FileStream file = File.Create(Application.persistentDataPath + "/Save.Ts");
         bf.Serialize(file, saveData);
         file.Close();
+    }
+
+    public void Load ()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(Application.persistentDataPath + "/Save.Ts", FileMode.Open);
+        saveData = (SaveData)bf.Deserialize(file);
+        file.Close();
+
+        playerData = saveData.playerData;
+        StartCoroutine(GoToScene(saveData.playerData.level));
+    }
+
+    public void New()
+    {
+        saveData = initialData;
+        StartCoroutine(GoToScene(saveData.playerData.level));
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
+    public IEnumerator GoToScene (int level)
+    {
+        AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(level);
+        while (sceneLoad.progress < 1)
+        {
+            yield return null;
+        }
+    }
+
+    void OnLevelLoad (Scene scene, LoadSceneMode mode)
+    {
+
     }
 
 }

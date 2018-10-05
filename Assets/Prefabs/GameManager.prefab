@@ -92,7 +92,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939e839413b3758409457c8796e1f369, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gui: {fileID: 0}
+  guiManager: {fileID: 0}
+  enemyManager: {fileID: 0}
+  menuManager: {fileID: 0}
+  consoleManager: {fileID: 0}
+  initialData:
+    playerData:
+      health: 100
+      level: 1
   doors: []
+  enemies: []
+  cameras: []
   playerData:
     health: 100
+    level: 0
+  saveData:
+    playerData:
+      health: 0
+      level: 0

@@ -29,9 +29,7 @@ public class ConsoleManager : MonoBehaviour
     }
 
     [Header("References")]
-    public GameObject console;
     public TextMeshProUGUI backlog;
-    public TMP_InputField input;
 
     [Header("Console Settings")]
     public char separator = ' ';
@@ -57,12 +55,12 @@ public class ConsoleManager : MonoBehaviour
         if(Input.GetKeyDown("`") && open)
         {
             open = false;
-            HideConsole();
+            GameManager.manager.menuManager.ChangeMenu(-1);
         }
         else if (Input.GetKeyDown("`"))
         {
             open = true;
-            ShowConsole();
+            GameManager.manager.menuManager.ChangeMenu(1);
         }
     }
 
@@ -143,18 +141,6 @@ public class ConsoleManager : MonoBehaviour
                 backlog.text += "[USER]: " + text + "\n";
                 break;
         }
-    }
-
-    public void HideConsole ()
-    {
-        console.SetActive(false);
-    }
-
-    public void ShowConsole ()
-    {
-        console.SetActive(true);
-        Debug.Log(starterText + "\n");
-        backlog.text += starterText + "\n";
     }
 
     #region Commands

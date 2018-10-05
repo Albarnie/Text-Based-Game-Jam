@@ -56,7 +56,7 @@ public class ConsoleText : MonoBehaviour
             if (counter > totalVisibleCharacters)
                 counter = totalVisibleCharacters;
 
-            yield return new WaitForSeconds(1 / revealSpeed);
+            yield return new WaitForSeconds(1f / revealSpeed);
         }
 
         //Debug.Log("Done revealing the text.");
