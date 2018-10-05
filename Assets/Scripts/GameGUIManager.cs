@@ -11,7 +11,7 @@ public class GameGUIManager : MonoBehaviour
 
     private void Start()
     {
-        GameManager.manager.gui = this;
+        GameManager.manager.guiManager = this;
     }
 
     public void UpdateWorldNotify(string text, Vector3 position)

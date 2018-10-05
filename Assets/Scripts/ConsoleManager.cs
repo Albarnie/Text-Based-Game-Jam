@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Console : MonoBehaviour
+public class ConsoleManager : MonoBehaviour
 {
     public enum PrintType
     {
@@ -45,6 +45,11 @@ public class Console : MonoBehaviour
     private void Awake()
     {
         backlog.text = "";
+    }
+
+    private void Start()
+    {
+        GameManager.manager.consoleManager = this;
     }
 
     private void Update()

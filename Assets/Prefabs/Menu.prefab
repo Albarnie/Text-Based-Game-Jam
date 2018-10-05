@@ -340,6 +340,13 @@ MonoBehaviour:
   - commandName: Login
     help: Connect administrator privelidges.
     authorised: 1
+  - commandName: Camera
+    help: Command for interacting with cameras.
+    authorised: 0
+  logins:
+  - username: Albarnie
+    password: Radreed is a silly head
+    priviledges: 00010000
   open: 0
 --- !u!114 &1632206878
 MonoBehaviour:
@@ -366,7 +373,7 @@ GameObject:
   - component: {fileID: 6377605634260381303}
   - component: {fileID: 6377605634260381301}
   - component: {fileID: 6377605634260381300}
-  - component: {fileID: 745921877}
+  - component: {fileID: 6754620889528361727}
   m_Layer: 5
   m_Name: Backlog
   m_TagString: Untagged
@@ -515,7 +522,7 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &745921877
+--- !u!114 &6754620889528361727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -524,10 +531,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6377605634260381302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e32c266ee6204b21a427753cb0694c81, type: 3}
+  m_Script: {fileID: 11500000, guid: fdb31f05bc0f9bf46b80eec25d2d37c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timing: 1
+  timing: 0
   revealSpeed: 50
 --- !u!1 &6377605634408765499
 GameObject:

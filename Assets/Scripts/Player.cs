@@ -42,6 +42,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void Damage (int amount)
+    {
+        GameManager.manager.playerData.health -= amount;
+        if(GameManager.manager.playerData.health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die ()
+    {
+    }
+
     void Fire ()
     {
         audioSources[0].clip = gun.shotShound;

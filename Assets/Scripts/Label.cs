@@ -29,15 +29,15 @@ public class Label : MonoBehaviour
             switch ((int)type)
             {
                 case 0:
-                    GameManager.manager.gui.UpdateWorldNotify("Name: '" + parent.deviceName + "' \nATID: " + parent.id, mousePos);
+                    GameManager.manager.guiManager.UpdateWorldNotify("Name: '" + parent.deviceName + "' \nATID: " + parent.id, mousePos);
                     Debug.DrawLine(transform.position, mousePos);
                     break;
                 case 1:
-                    GameManager.manager.gui.UpdateWorldNotify("Username: '" + GameManager.manager.gui.GetComponent<Console>().logins[parent.id].username + "' \nPassword: '" + GameManager.manager.gui.GetComponent<Console>().logins[parent.id].password + "'", mousePos);
+                    GameManager.manager.guiManager.UpdateWorldNotify("Username: '" + GameManager.manager.consoleManager.logins[parent.id].username + "' \nPassword: '" + GameManager.manager.consoleManager.logins[parent.id].password + "'", mousePos);
                     Debug.DrawLine(transform.position, mousePos);
                     break;
                 case 2:
-                    GameManager.manager.gui.UpdateWorldNotify(parent.deviceName, mousePos);
+                    GameManager.manager.guiManager.UpdateWorldNotify(parent.deviceName, mousePos);
                     Debug.DrawLine(transform.position, mousePos);
                     break;
             }

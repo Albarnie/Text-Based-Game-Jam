@@ -9,6 +9,7 @@ public class SecurityCamera : Electronic
 
     private void Start()
     {
+        id = GameManager.manager.cameras.Count;
         GameManager.manager.cameras.Add(this);
     }
 
