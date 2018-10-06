@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecurityCamera : Electronic
+public class Alarm : Electronic
 {
-
+    
 }

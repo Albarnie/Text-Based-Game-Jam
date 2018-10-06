@@ -22,10 +22,18 @@ public class ConsoleManager : MonoBehaviour
     }
 
     [System.Serializable]
-    public struct AdminLogin
+    public struct Login
     {
         public string username, password;
         public bool[] priviledges;
+    }
+
+    [System.Serializable]
+    public struct Email
+    {
+        public string username, password;
+        [Multiline]
+        public string[] emails;
     }
 
     [Header("References")]
@@ -35,7 +43,8 @@ public class ConsoleManager : MonoBehaviour
     public char separator = ' ';
     public string starterText = "Welcome to the console, type 'Help' for help";
     public Command[] commands;
-    public AdminLogin[] logins;
+    public Login[] logins;
+    public Email[] emails;
 
     [Header("Parameters")]
     public bool open;
@@ -105,7 +114,7 @@ public class ConsoleManager : MonoBehaviour
                 Say(arguments);
                 break;
             case "login":
-                Login(arguments);
+                LogIn(arguments);
                 break;
             case "camera":
                 Camera(arguments);
@@ -149,9 +158,9 @@ public class ConsoleManager : MonoBehaviour
         switch (arguments[1])
         {
             case "open":
-                if (int.Parse(arguments[2]) < GameManager.manager.doors.Count)
+                if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
                 {
-                    GameManager.manager.doors[int.Parse(arguments[2])].Open();
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
                 }
                 else
                 {
@@ -159,9 +168,9 @@ public class ConsoleManager : MonoBehaviour
                 }
                 break;
             case "close":
-                if (int.Parse(arguments[2]) < GameManager.manager.doors.Count)
+                if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
                 {
-                    GameManager.manager.doors[int.Parse(arguments[2])].Close();
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
                 }
                 else
                 {
@@ -216,7 +225,7 @@ public class ConsoleManager : MonoBehaviour
         }
     }
 
-    void Login (string[] arguments)
+    void LogIn (string[] arguments)
     {
         if(arguments.Length >= 3)
         {
@@ -265,9 +274,9 @@ public class ConsoleManager : MonoBehaviour
         switch (arguments[1])
         {
             case "enable":
-                if (int.Parse(arguments[2]) < GameManager.manager.doors.Count)
+                if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
                 {
-                    GameManager.manager.cameras[int.Parse(arguments[2])].Enable();
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
                 }
                 else
                 {
@@ -275,9 +284,9 @@ public class ConsoleManager : MonoBehaviour
                 }
                 break;
             case "disable":
-                if (int.Parse(arguments[2]) < GameManager.manager.doors.Count)
+                if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
                 {
-                    GameManager.manager.cameras[int.Parse(arguments[2])].Disable();
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
                 }
                 else
                 {

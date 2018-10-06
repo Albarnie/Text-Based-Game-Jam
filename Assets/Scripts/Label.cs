@@ -8,7 +8,8 @@ public class Label : MonoBehaviour
     {
         Electronic,
         Password,
-        Note
+        Note,
+        Email
     }
 
 
@@ -38,6 +39,10 @@ public class Label : MonoBehaviour
                     break;
                 case 2:
                     GameManager.manager.guiManager.UpdateWorldNotify(parent.deviceName, mousePos);
+                    Debug.DrawLine(transform.position, mousePos);
+                    break;
+                case 3:
+                    GameManager.manager.guiManager.UpdateWorldNotify(parent.deviceName + "\nUsername: '" + GameManager.manager.consoleManager.emails[parent.id].username + "' \nPassword: '" + GameManager.manager.consoleManager.emails[parent.id].password + "'", mousePos);
                     Debug.DrawLine(transform.position, mousePos);
                     break;
             }
