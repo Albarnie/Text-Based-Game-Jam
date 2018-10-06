@@ -62,7 +62,7 @@ public class ConsoleManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown("`") && open)
+        if (Input.GetKeyDown("`") && open)
         {
             open = false;
             GameManager.manager.menuManager.ChangeMenu(-1);
@@ -74,7 +74,7 @@ public class ConsoleManager : MonoBehaviour
         }
     }
 
-    public void Parse (string text)
+    public void Parse(string text)
     {
         string[] arguments = text.ToLower().Split(separator);
 
@@ -160,43 +160,29 @@ public class ConsoleManager : MonoBehaviour
     }
 
     #region Commands
-    void Door (string[] arguments)
+    void Door(string[] arguments)
     {
-        if (GameManager.manager.electronics[int.Parse(arguments[2])] is Door)
+        if (GameManager.manager.electronics[int.Parse(arguments[2])] is Door && int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
         {
             switch (arguments[1])
             {
                 case "open":
-                    if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
-                    {
-                        GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
-                    }
-                    else
-                    {
-                        Print("Invalid id.", PrintType.Error);
-                    }
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
                     break;
                 case "close":
-                    if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
-                    {
-                        GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
-                    }
-                    else
-                    {
-                        Print("Invalid id.", PrintType.Error);
-                    }
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
                     break;
             }
         }
         else
         {
-            Print("Selected object is of the wrong type.", PrintType.Error);
+            Print("Invalid ID.", PrintType.Error);
         }
     }
 
-    void Help (string[] arguments)
+    void Help(string[] arguments)
     {
-        if(arguments.Length <= 1)
+        if (arguments.Length <= 1)
         {
             string help = "Help:";
             foreach (Command command in commands)
@@ -212,7 +198,7 @@ public class ConsoleManager : MonoBehaviour
             int i = 0;
             while (cont && i < commands.Length)
             {
-                if(arguments[1] == commands[i].commandName.ToLower())
+                if (arguments[1] == commands[i].commandName.ToLower())
                 {
                     string help = commands[i].commandName + ": " + commands[i].help;
                     Print(help + "\n USEAGE: " + commands[i].useage, PrintType.Info);
@@ -223,12 +209,12 @@ public class ConsoleManager : MonoBehaviour
         }
     }
 
-    void Say (string[] arguments)
+    void Say(string[] arguments)
     {
-        if(arguments.Length >=2)
+        if (arguments.Length >= 2)
         {
             string say = "";
-            for (int i = 1; i < arguments.Length; i ++)
+            for (int i = 1; i < arguments.Length; i++)
             {
                 say += arguments[i] + " ";
             }
@@ -240,9 +226,9 @@ public class ConsoleManager : MonoBehaviour
         }
     }
 
-    void LogIn (string[] arguments)
+    void LogIn(string[] arguments)
     {
-        if(arguments.Length >= 3)
+        if (arguments.Length >= 3)
         {
             bool cont = true;
             int i = 0;
@@ -271,77 +257,52 @@ public class ConsoleManager : MonoBehaviour
                 i++;
             }
         }
-        else if(arguments.Length < 3)
+        else if (arguments.Length < 3)
         {
             Print("Not enough arguments.", PrintType.Error);
         }
     }
 
-    void Camera (string[] arguments)
+    void Camera(string[] arguments)
     {
-        if (GameManager.manager.electronics[int.Parse(arguments[2])] is Camera)
+        if (GameManager.manager.electronics[int.Parse(arguments[2])] is SecurityCamera && int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
         {
             switch (arguments[1])
             {
                 case "enable":
-                    if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
-                    {
-                        GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
-                    }
-                    else
-                    {
-                        Print("Invalid id.", PrintType.Error);
-                    }
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
                     break;
                 case "disable":
-                    if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
-                    {
-                        GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
-                    }
-                    else
-                    {
-                        Print("Invalid id.", PrintType.Error);
-                    }
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
                     break;
             }
         }
     }
 
-    void Alarm (string[] arguments)
+    void Alarm(string[] arguments)
     {
-        if (GameManager.manager.electronics[int.Parse(arguments[2])] is Alarm)
+        if (GameManager.manager.electronics[int.Parse(arguments[2])] is Alarm && int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
         {
             switch (arguments[1])
             {
                 case "disable":
-                    if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
-                    {
-                        GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
-                    }
-                    else
-                    {
-                        Print("Invalid id.", PrintType.Error);
-                    }
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
                     break;
                 case "enable":
-                    if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
-                    {
-                        GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
-                    }
-                    else
-                    {
-                        Print("Invalid id.", PrintType.Error);
-                    }
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
+                    break;
+                case "activate":
+                    ((Alarm)GameManager.manager.electronics[int.Parse(arguments[2])]).SetOff();
                     break;
             }
         }
         else
         {
-            Print("Selected object is of the wrong type.", PrintType.Error);
+            Print("Invalid ID.", PrintType.Error);
         }
     }
 
-    void OpenEmail (string[] arguments)
+    void OpenEmail(string[] arguments)
     {
         if (arguments.Length == 4)
         {

@@ -519,7 +519,7 @@ MonoBehaviour:
   commands:
   - commandName: Help
     help: Stop it. Get help.
-    useage: help [command[
+    useage: help [command]
     authorised: 1
   - commandName: Login
     help: Connect administrator priviledges.
@@ -539,7 +539,7 @@ MonoBehaviour:
     authorised: 0
   - commandName: Alarm
     help: Interact with albarnietech(tm) enabled alarms.
-    useage: Alarm [disable, enable] [Alarm number]
+    useage: Alarm [disable, enable, activate] [Alarm number]
     authorised: 0
   - commandName: Email
     help: Access emails.
