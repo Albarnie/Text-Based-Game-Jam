@@ -18,14 +18,23 @@ public class ConsoleManager : MonoBehaviour
     {
         public string commandName;
         public string help;
+        public string useage;
         public bool authorised;
     }
 
     [System.Serializable]
-    public struct AdminLogin
+    public struct Login
     {
         public string username, password;
         public bool[] priviledges;
+    }
+
+    [System.Serializable]
+    public struct Email
+    {
+        public string username, password;
+        [Multiline]
+        public string[] emails;
     }
 
     [Header("References")]
@@ -35,7 +44,8 @@ public class ConsoleManager : MonoBehaviour
     public char separator = ' ';
     public string starterText = "Welcome to the console, type 'Help' for help";
     public Command[] commands;
-    public AdminLogin[] logins;
+    public Login[] logins;
+    public Email[] emails;
 
     [Header("Parameters")]
     public bool open;
@@ -52,7 +62,7 @@ public class ConsoleManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown("`") && open)
+        if (Input.GetKeyDown("`") && open)
         {
             open = false;
             GameManager.manager.menuManager.ChangeMenu(-1);
@@ -64,7 +74,7 @@ public class ConsoleManager : MonoBehaviour
         }
     }
 
-    public void Parse (string text)
+    public void Parse(string text)
     {
         string[] arguments = text.ToLower().Split(separator);
 
@@ -105,10 +115,16 @@ public class ConsoleManager : MonoBehaviour
                 Say(arguments);
                 break;
             case "login":
-                Login(arguments);
+                LogIn(arguments);
                 break;
             case "camera":
                 Camera(arguments);
+                break;
+            case "alarm":
+                Alarm(arguments);
+                break;
+            case "email":
+                OpenEmail(arguments);
                 break;
             default:
                 Print("Unknown command: " + arguments[0], PrintType.Error);
@@ -144,41 +160,35 @@ public class ConsoleManager : MonoBehaviour
     }
 
     #region Commands
-    void Door (string[] arguments)
+    void Door(string[] arguments)
     {
-        switch (arguments[1])
+        if (GameManager.manager.electronics[int.Parse(arguments[2])] is Door && int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
         {
-            case "open":
-                if (int.Parse(arguments[2]) < GameManager.manager.doors.Count)
-                {
-                    GameManager.manager.doors[int.Parse(arguments[2])].Open();
-                }
-                else
-                {
-                    Print("Invalid id.", PrintType.Error);
-                }
-                break;
-            case "close":
-                if (int.Parse(arguments[2]) < GameManager.manager.doors.Count)
-                {
-                    GameManager.manager.doors[int.Parse(arguments[2])].Close();
-                }
-                else
-                {
-                    Print("Invalid id.", PrintType.Error);
-                }
-                break;
+            switch (arguments[1])
+            {
+                case "open":
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
+                    break;
+                case "close":
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
+                    break;
+            }
+        }
+        else
+        {
+            Print("Invalid ID.", PrintType.Error);
         }
     }
 
-    void Help (string[] arguments)
+    void Help(string[] arguments)
     {
-        if(arguments.Length <= 1)
+        if (arguments.Length <= 1)
         {
             string help = "Help:";
             foreach (Command command in commands)
             {
                 help += "\n" + command.commandName + ": " + command.help;
+                help += "\n USEAGE: " + command.useage;
             }
             Print(help, PrintType.Info);
         }
@@ -188,10 +198,10 @@ public class ConsoleManager : MonoBehaviour
             int i = 0;
             while (cont && i < commands.Length)
             {
-                if(arguments[1] == commands[i].commandName.ToLower())
+                if (arguments[1] == commands[i].commandName.ToLower())
                 {
                     string help = commands[i].commandName + ": " + commands[i].help;
-                    Print(help, PrintType.Info);
+                    Print(help + "\n USEAGE: " + commands[i].useage, PrintType.Info);
                     cont = false;
                 }
                 i++;
@@ -199,12 +209,12 @@ public class ConsoleManager : MonoBehaviour
         }
     }
 
-    void Say (string[] arguments)
+    void Say(string[] arguments)
     {
-        if(arguments.Length >=2)
+        if (arguments.Length >= 2)
         {
             string say = "";
-            for (int i = 1; i < arguments.Length; i ++)
+            for (int i = 1; i < arguments.Length; i++)
             {
                 say += arguments[i] + " ";
             }
@@ -216,9 +226,85 @@ public class ConsoleManager : MonoBehaviour
         }
     }
 
-    void Login (string[] arguments)
+    void LogIn(string[] arguments)
     {
-        if(arguments.Length >= 3)
+        if (arguments.Length >= 3)
+        {
+            bool cont = true;
+            int i = 0;
+            while (cont && i < emails.Length)
+            {
+                if (arguments[1] == emails[i].username.ToLower())
+                {
+                    string password = "";
+                    for (int p = 2; p < arguments.Length; p++)
+                    {
+                        password += arguments[p];
+                        if (p < arguments.Length - 1)
+                            password += " ";
+                    }
+
+                    if (password == emails[i].password.ToLower())
+                    {
+                        Print("Successfully logged in as '" + emails[i].username + "'.", PrintType.Info);
+                        Print(emails[i].emails[int.Parse(arguments[2])], PrintType.Info);
+                    }
+                    else
+                    {
+                        Print("Incorrect password.", PrintType.Error);
+                    }
+                }
+                i++;
+            }
+        }
+        else if (arguments.Length < 3)
+        {
+            Print("Not enough arguments.", PrintType.Error);
+        }
+    }
+
+    void Camera(string[] arguments)
+    {
+        if (GameManager.manager.electronics[int.Parse(arguments[2])] is SecurityCamera && int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
+        {
+            switch (arguments[1])
+            {
+                case "enable":
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
+                    break;
+                case "disable":
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
+                    break;
+            }
+        }
+    }
+
+    void Alarm(string[] arguments)
+    {
+        if (GameManager.manager.electronics[int.Parse(arguments[2])] is Alarm && int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
+        {
+            switch (arguments[1])
+            {
+                case "disable":
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
+                    break;
+                case "enable":
+                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
+                    break;
+                case "activate":
+                    ((Alarm)GameManager.manager.electronics[int.Parse(arguments[2])]).SetOff();
+                    break;
+            }
+        }
+        else
+        {
+            Print("Invalid ID.", PrintType.Error);
+        }
+    }
+
+    void OpenEmail(string[] arguments)
+    {
+        if (arguments.Length == 4)
         {
             bool cont = true;
             int i = 0;
@@ -239,7 +325,7 @@ public class ConsoleManager : MonoBehaviour
                         Print("Successfully logged in as '" + logins[i].username + "'.", PrintType.Info);
                         for (int ii = 0; ii < logins[i].priviledges.Length; ii++)
                         {
-                            if(logins[i].priviledges[ii])
+                            if (logins[i].priviledges[ii])
                             {
                                 commands[ii].authorised = true;
                             }
@@ -254,36 +340,9 @@ public class ConsoleManager : MonoBehaviour
                 i++;
             }
         }
-        else if(arguments.Length < 3)
+        else if (arguments.Length < 4)
         {
             Print("Not enough arguments.", PrintType.Error);
-        }
-    }
-
-    void Camera (string[] arguments)
-    {
-        switch (arguments[1])
-        {
-            case "enable":
-                if (int.Parse(arguments[2]) < GameManager.manager.doors.Count)
-                {
-                    GameManager.manager.cameras[int.Parse(arguments[2])].Enable();
-                }
-                else
-                {
-                    Print("Invalid id.", PrintType.Error);
-                }
-                break;
-            case "disable":
-                if (int.Parse(arguments[2]) < GameManager.manager.doors.Count)
-                {
-                    GameManager.manager.cameras[int.Parse(arguments[2])].Disable();
-                }
-                else
-                {
-                    Print("Invalid id.", PrintType.Error);
-                }
-                break;
         }
     }
 
