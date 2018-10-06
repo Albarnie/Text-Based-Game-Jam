@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: aaade1d9694f2a741adc5aabd50ab010
+guid: a0a4224e69a94a84bad78c448acc48a5
 TextureImporter:
   fileIDToRecycleName:
     21300000: Note_0
     21300002: Note_0
-    21300004: Camera_0
-    21300006: Camera_1
+    21300004: Tiles_Tiles_0
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -88,13 +87,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Camera_0
+      name: Tiles_Tiles_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 16
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -102,27 +101,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc7e3a826699e2748938c02234a053dd
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Camera_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 45f32dc6da458384784462b7295400dd
+      spriteID: df6aa54e2c8b30241b2fe82052d975db
       vertices: []
       indices: 
       edges: []

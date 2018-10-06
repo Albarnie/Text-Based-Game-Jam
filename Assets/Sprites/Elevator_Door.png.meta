@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: aaade1d9694f2a741adc5aabd50ab010
+guid: b0cd47bf7360e2943801f51dab050ba8
 TextureImporter:
   fileIDToRecycleName:
     21300000: Note_0
     21300002: Note_0
-    21300004: Camera_0
-    21300006: Camera_1
+    21300004: Elevator_Door_0
+    21300006: Elevator_Door_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -88,33 +88,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Camera_0
+      name: Elevator_Door_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bc7e3a826699e2748938c02234a053dd
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Camera_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,7 +102,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45f32dc6da458384784462b7295400dd
+      spriteID: 59909d58532b42046b32296b9b27dd05
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Elevator_Door_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5e39f77eed7ed048b5ca181ddd0ca56
       vertices: []
       indices: 
       edges: []

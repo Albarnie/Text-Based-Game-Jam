@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: aaade1d9694f2a741adc5aabd50ab010
+guid: 809ab8d299e33d741aea3dd5a02f4aa2
 TextureImporter:
   fileIDToRecycleName:
     21300000: Note_0
     21300002: Note_0
-    21300004: Camera_0
-    21300006: Camera_1
+    21300004: Computer_0
+    21300006: Computer_1
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -88,7 +88,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Camera_0
+      name: Computer_0
       rect:
         serializedVersion: 2
         x: 0
@@ -96,19 +96,19 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc7e3a826699e2748938c02234a053dd
+      spriteID: 19e747f2045b12147bae7eb478cfd110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Camera_1
+      name: Computer_1
       rect:
         serializedVersion: 2
         x: 16
@@ -122,7 +122,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45f32dc6da458384784462b7295400dd
+      spriteID: 80b2e9677712c3d44935c387a0f271b6
       vertices: []
       indices: 
       edges: []
