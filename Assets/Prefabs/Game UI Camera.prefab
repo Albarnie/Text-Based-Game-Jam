@@ -518,26 +518,39 @@ MonoBehaviour:
   starterText: Welcome to the albarnietech(tm) console for home and business use. type 'help' for help.
   commands:
   - commandName: Help
-    help: Get help.
+    help: Stop it. Get help.
+    useage: help [command[
     authorised: 1
   - commandName: Login
     help: Connect administrator priviledges.
+    useage: Login [username] [password]
     authorised: 1
   - commandName: Say
     help: Make the console repeat something.
+    useage: Say [text]
     authorised: 1
   - commandName: Door
     help: Interact with albarnietech(tm) enabled doors.
+    useage: Door [open, close] [door number]
     authorised: 0
   - commandName: Camera
     help: Interact with cameras.
+    useage: Camera [disable, enable] [Camera number]
+    authorised: 0
+  - commandName: Alarm
+    help: Interact with albarnietech(tm) enabled alarms.
+    useage: Alarm [disable, enable] [Alarm number]
+    authorised: 0
+  - commandName: Email
+    help: Access emails.
+    useage: Email [username] [password] email number
     authorised: 0
   logins:
   - username: Albarnie
     password: Nook is silly
     priviledges: 0101010100
-  - username: Log
-    password: Me in you piece of shit
+  - username: Me
+    password: You bitch
     priviledges: 0101010101
   emails:
   - username: Aquatic
@@ -1351,6 +1364,5 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 417540612658135943, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b3715214da97549a67c1bc6c830790, type: 3}

@@ -18,6 +18,7 @@ public class ConsoleManager : MonoBehaviour
     {
         public string commandName;
         public string help;
+        public string useage;
         public bool authorised;
     }
 
@@ -119,6 +120,12 @@ public class ConsoleManager : MonoBehaviour
             case "camera":
                 Camera(arguments);
                 break;
+            case "alarm":
+                Alarm(arguments);
+                break;
+            case "email":
+                OpenEmail(arguments);
+                break;
             default:
                 Print("Unknown command: " + arguments[0], PrintType.Error);
                 break;
@@ -155,28 +162,35 @@ public class ConsoleManager : MonoBehaviour
     #region Commands
     void Door (string[] arguments)
     {
-        switch (arguments[1])
+        if (GameManager.manager.electronics[int.Parse(arguments[2])] is Door)
         {
-            case "open":
-                if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
-                {
-                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
-                }
-                else
-                {
-                    Print("Invalid id.", PrintType.Error);
-                }
-                break;
-            case "close":
-                if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
-                {
-                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
-                }
-                else
-                {
-                    Print("Invalid id.", PrintType.Error);
-                }
-                break;
+            switch (arguments[1])
+            {
+                case "open":
+                    if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
+                    {
+                        GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
+                    }
+                    else
+                    {
+                        Print("Invalid id.", PrintType.Error);
+                    }
+                    break;
+                case "close":
+                    if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
+                    {
+                        GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
+                    }
+                    else
+                    {
+                        Print("Invalid id.", PrintType.Error);
+                    }
+                    break;
+            }
+        }
+        else
+        {
+            Print("Selected object is of the wrong type.", PrintType.Error);
         }
     }
 
@@ -188,6 +202,7 @@ public class ConsoleManager : MonoBehaviour
             foreach (Command command in commands)
             {
                 help += "\n" + command.commandName + ": " + command.help;
+                help += "\n USEAGE: " + command.useage;
             }
             Print(help, PrintType.Info);
         }
@@ -200,7 +215,7 @@ public class ConsoleManager : MonoBehaviour
                 if(arguments[1] == commands[i].commandName.ToLower())
                 {
                     string help = commands[i].commandName + ": " + commands[i].help;
-                    Print(help, PrintType.Info);
+                    Print(help + "\n USEAGE: " + commands[i].useage, PrintType.Info);
                     cont = false;
                 }
                 i++;
@@ -231,9 +246,9 @@ public class ConsoleManager : MonoBehaviour
         {
             bool cont = true;
             int i = 0;
-            while (cont && i < logins.Length)
+            while (cont && i < emails.Length)
             {
-                if (arguments[1] == logins[i].username.ToLower())
+                if (arguments[1] == emails[i].username.ToLower())
                 {
                     string password = "";
                     for (int p = 2; p < arguments.Length; p++)
@@ -243,17 +258,10 @@ public class ConsoleManager : MonoBehaviour
                             password += " ";
                     }
 
-                    if (password == logins[i].password.ToLower())
+                    if (password == emails[i].password.ToLower())
                     {
-                        Print("Successfully logged in as '" + logins[i].username + "'.", PrintType.Info);
-                        for (int ii = 0; ii < logins[i].priviledges.Length; ii++)
-                        {
-                            if(logins[i].priviledges[ii])
-                            {
-                                commands[ii].authorised = true;
-                            }
-                        }
-                        Print("Granted necessary priviledges.", PrintType.Info);
+                        Print("Successfully logged in as '" + emails[i].username + "'.", PrintType.Info);
+                        Print(emails[i].emails[int.Parse(arguments[2])], PrintType.Info);
                     }
                     else
                     {
@@ -271,28 +279,109 @@ public class ConsoleManager : MonoBehaviour
 
     void Camera (string[] arguments)
     {
-        switch (arguments[1])
+        if (GameManager.manager.electronics[int.Parse(arguments[2])] is Camera)
         {
-            case "enable":
-                if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
+            switch (arguments[1])
+            {
+                case "enable":
+                    if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
+                    {
+                        GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
+                    }
+                    else
+                    {
+                        Print("Invalid id.", PrintType.Error);
+                    }
+                    break;
+                case "disable":
+                    if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
+                    {
+                        GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
+                    }
+                    else
+                    {
+                        Print("Invalid id.", PrintType.Error);
+                    }
+                    break;
+            }
+        }
+    }
+
+    void Alarm (string[] arguments)
+    {
+        if (GameManager.manager.electronics[int.Parse(arguments[2])] is Alarm)
+        {
+            switch (arguments[1])
+            {
+                case "disable":
+                    if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
+                    {
+                        GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
+                    }
+                    else
+                    {
+                        Print("Invalid id.", PrintType.Error);
+                    }
+                    break;
+                case "enable":
+                    if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
+                    {
+                        GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
+                    }
+                    else
+                    {
+                        Print("Invalid id.", PrintType.Error);
+                    }
+                    break;
+            }
+        }
+        else
+        {
+            Print("Selected object is of the wrong type.", PrintType.Error);
+        }
+    }
+
+    void OpenEmail (string[] arguments)
+    {
+        if (arguments.Length == 4)
+        {
+            bool cont = true;
+            int i = 0;
+            while (cont && i < logins.Length)
+            {
+                if (arguments[1] == logins[i].username.ToLower())
                 {
-                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
+                    string password = "";
+                    for (int p = 2; p < arguments.Length; p++)
+                    {
+                        password += arguments[p];
+                        if (p < arguments.Length - 1)
+                            password += " ";
+                    }
+
+                    if (password == logins[i].password.ToLower())
+                    {
+                        Print("Successfully logged in as '" + logins[i].username + "'.", PrintType.Info);
+                        for (int ii = 0; ii < logins[i].priviledges.Length; ii++)
+                        {
+                            if (logins[i].priviledges[ii])
+                            {
+                                commands[ii].authorised = true;
+                            }
+                        }
+                        Print("Granted necessary priviledges.", PrintType.Info);
+                    }
+                    else
+                    {
+                        Print("Incorrect password.", PrintType.Error);
+                    }
                 }
-                else
-                {
-                    Print("Invalid id.", PrintType.Error);
-                }
-                break;
-            case "disable":
-                if (int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
-                {
-                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
-                }
-                else
-                {
-                    Print("Invalid id.", PrintType.Error);
-                }
-                break;
+                i++;
+            }
+        }
+        else if (arguments.Length < 4)
+        {
+            Print("Not enough arguments.", PrintType.Error);
         }
     }
 
