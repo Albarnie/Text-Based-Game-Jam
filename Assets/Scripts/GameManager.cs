@@ -33,9 +33,7 @@ public class GameManager : MonoBehaviour
     public Gun[] guns;
 
     [Header("Object Lists")]
-    public List<Door> doors;
-    public List<Enemy> enemies;
-    public List<SecurityCamera> cameras;
+    public List<Electronic> electronics;
 
     [Header("Data")]
     public PlayerData playerData;
