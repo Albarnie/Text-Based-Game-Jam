@@ -11,7 +11,7 @@ public class EnemyManager : MonoBehaviour
     }
 
 
-    public Enemy[] enemies;
+    public List<Enemy> enemies;
 
     public void Alert (Vector3 position, float soundRadius, float visualRadius)
     {

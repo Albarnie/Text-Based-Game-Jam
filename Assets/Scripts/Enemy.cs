@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        id = GameManager.manager.enemies.Count;
-        GameManager.manager.enemies.Add(this);
+        id = GameManager.manager.enemyManager.enemies.Count;
+        GameManager.manager.enemyManager.enemies.Add(this);
     }
 
     public void Alert(Vector3 position, float soundRadius, float visualRadius)

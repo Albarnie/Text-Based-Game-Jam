@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public EnemyManager enemyManager;
     public MenuManager menuManager;
     public ConsoleManager consoleManager;
+    public Player player;
 
     [Header("Settings")]
     public SaveData initialData;
@@ -34,7 +35,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Object Lists")]
     public List<Electronic> electronics;
-    public List<Enemy> enemies;
 
     [Header("Data")]
     public PlayerData playerData;

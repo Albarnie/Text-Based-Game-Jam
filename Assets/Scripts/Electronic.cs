@@ -6,12 +6,13 @@ public class Electronic : MonoBehaviour
 {
     protected SpriteRenderer spriteRenderer;
 
+    [Header("Electronic settings")]
     [Multiline]
     public string deviceName;
     public int id;
     public bool connected = true;
 
-    public Sprite[] sprites;
+    public Sprite[] sprites = new Sprite[2];
 
     public bool disabled;
 

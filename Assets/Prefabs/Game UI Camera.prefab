@@ -486,17 +486,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 417540614044391464, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
   m_PrefabInstance: {fileID: 4970654536784258395}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4697299554765094258 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 417540614044391465, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
-  m_PrefabInstance: {fileID: 4970654536784258395}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4697299554765094256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5053773d8108e534fa95c9926dfe724c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4697299554765094257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,6 +536,15 @@ MonoBehaviour:
   - username: Albarnie
     password: Nook is silly
     priviledges: 0101010100
+  - username: Log
+    password: Me in you piece of shit
+    priviledges: 0101010101
+  emails:
+  - username: Aquatic
+    password: FurryP123
+    emails:
+    - Help Me
+    - 
   open: 0
 --- !u!1 &4697299555132748056 stripped
 GameObject:
@@ -857,7 +855,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4697299554765094258}
+      - m_Target: {fileID: 6629281328501696474}
         m_MethodName: Parse
         m_Mode: 0
         m_Arguments:
@@ -1353,5 +1351,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 417540612658135943, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
