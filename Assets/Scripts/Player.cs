@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         gun = GameManager.manager.guns[GameManager.manager.playerData.gun];
+        GameManager.manager.player = this;
     }
 
     private void Update()

@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public EnemyManager enemyManager;
     public MenuManager menuManager;
     public ConsoleManager consoleManager;
+    public Player player;
 
     [Header("Settings")]
     public SaveData initialData;

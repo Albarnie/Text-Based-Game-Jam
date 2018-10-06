@@ -7,7 +7,6 @@ public class Electronic : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
 
     [Header("Electronic settings")]
-
     [Multiline]
     public string deviceName;
     public int id;

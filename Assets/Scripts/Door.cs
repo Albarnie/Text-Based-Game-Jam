@@ -4,35 +4,17 @@ using UnityEngine;
 
 public class Door : Electronic
 {
-    SpriteRenderer spriteRenderer;
 
-    public Sprite[] sprites = new Sprite[2];
-
-    public bool open;
-
-    private void Awake()
+    public override void Disable ()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    private void Start()
-    {
-        id = GameManager.manager.doors.Count;
-        GameManager.manager.doors.Add(this);
-    }
-
-    public void Open ()
-    {
-        open = true;
+        base.Disable();
         GetComponent<Collider2D>().enabled = false;
-        spriteRenderer.sprite = sprites[1];
     }
 
-    public void Close ()
+    public override void Enable ()
     {
-        open = false;
+        base.Enable();
         GetComponent<Collider2D>().enabled = true;
-        spriteRenderer.sprite = sprites[0];
     }
 
 }
