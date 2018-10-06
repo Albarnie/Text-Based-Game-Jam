@@ -7862,6 +7862,10 @@ PrefabInstance:
 
         passwords'
       objectReference: {fileID: 0}
+    - target: {fileID: 6629281328501696474, guid: 65c3529a885850745a1f082858057434, type: 3}
+      propertyPath: commands.Array.data[6].authorised
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4697299554523686620, guid: 65c3529a885850745a1f082858057434, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 65c3529a885850745a1f082858057434, type: 3}
