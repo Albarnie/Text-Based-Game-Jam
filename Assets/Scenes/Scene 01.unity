@@ -259,7 +259,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124212130}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9599998, y: -0.9899999, z: -20}
+  m_LocalPosition: {x: 3.9599996, y: -0.9899999, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 768068398}
@@ -16920,7 +16920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3174976596267171715, guid: e9337a4d01bb5b34c9b92e1e844e6585, type: 3}
       propertyPath: deviceName
-      value: "From: Kate Durtal, assistant Supervisor\nTo: All\n\nRemember Guys:\nThe password for the camera system on this floor\ngets changed every month.\nTo get it talk to Steve Lambert,\nhe gets the new password sent\nto his Email account each month.\nThe Username for the camera system stays\n'Camerasystem' (simple enough)\n \n-Kate Durtal"
+      value: "From: Kate Durtal, assistant Supervisor\nTo: All\n\nRemember Guys:\nThe password for the camera system on this floor\ngets changed every month.\nTo get it talk to Steve Lambert,\nhe gets the new password sent\nto his Email account each month.\nThe Username for the camera system stays\n'Camerasystem' (simple enough).\nHis Email address is SteveLambert\nincase you want to write one to him.\n \n-Kate Durtal"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9337a4d01bb5b34c9b92e1e844e6585, type: 3}
@@ -18501,7 +18501,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954729540}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9599998, y: -0.9899999, z: -20}
+  m_LocalPosition: {x: 3.9599996, y: -0.9899999, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -19768,7 +19768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2616796086959207952, guid: 4a138d717ec4a164e8da0ecccbd2b84a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.697
+      value: 18.8
       objectReference: {fileID: 0}
     - target: {fileID: 2616796086959207952, guid: 4a138d717ec4a164e8da0ecccbd2b84a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -19792,7 +19792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2616796086959207952, guid: 4a138d717ec4a164e8da0ecccbd2b84a, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2616796086959207952, guid: 4a138d717ec4a164e8da0ecccbd2b84a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
