@@ -58,6 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8265745696695997682}
   - component: {fileID: 8265745696695997693}
+  - component: {fileID: 2163144082277178622}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -96,6 +97,7 @@ MonoBehaviour:
   enemyManager: {fileID: 0}
   menuManager: {fileID: 0}
   consoleManager: {fileID: 0}
+  player: {fileID: 0}
   initialData:
     playerData:
       health: 100
@@ -142,9 +144,8 @@ MonoBehaviour:
     shotShound: {fileID: 8300000, guid: 1751f6553d4721245b0ab3c4a59da47a, type: 3}
     reloadSound: {fileID: 0}
     noAmmoSound: {fileID: 0}
-  doors: []
+  electronics: []
   enemies: []
-  cameras: []
   playerData:
     health: 100
     level: 0
@@ -156,3 +157,16 @@ MonoBehaviour:
       level: 0
       gun: 0
       ammoInClip: 
+--- !u!114 &2163144082277178622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8265745696695997692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e75451b5a375114897919ddd53b2cee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies: []

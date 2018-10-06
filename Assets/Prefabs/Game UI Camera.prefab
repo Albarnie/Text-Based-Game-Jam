@@ -486,17 +486,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 417540614044391464, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
   m_PrefabInstance: {fileID: 4970654536784258395}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4697299554765094258 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 417540614044391465, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
-  m_PrefabInstance: {fileID: 4970654536784258395}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4697299554765094256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5053773d8108e534fa95c9926dfe724c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4697299554765094257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,24 +518,46 @@ MonoBehaviour:
   starterText: Welcome to the albarnietech(tm) console for home and business use. type 'help' for help.
   commands:
   - commandName: Help
-    help: Get help.
+    help: Stop it. Get help.
+    useage: help [command]
     authorised: 1
   - commandName: Login
     help: Connect administrator priviledges.
+    useage: Login [username] [password]
     authorised: 1
   - commandName: Say
     help: Make the console repeat something.
+    useage: Say [text]
     authorised: 1
   - commandName: Door
     help: Interact with albarnietech(tm) enabled doors.
+    useage: Door [open, close] [door number]
     authorised: 0
   - commandName: Camera
     help: Interact with cameras.
+    useage: Camera [disable, enable] [Camera number]
+    authorised: 0
+  - commandName: Alarm
+    help: Interact with albarnietech(tm) enabled alarms.
+    useage: Alarm [disable, enable, activate] [Alarm number]
+    authorised: 0
+  - commandName: Email
+    help: Access emails.
+    useage: Email [username] [password] email number
     authorised: 0
   logins:
   - username: Albarnie
     password: Nook is silly
     priviledges: 0101010100
+  - username: Me
+    password: You bitch
+    priviledges: 0101010101
+  emails:
+  - username: Aquatic
+    password: FurryP123
+    emails:
+    - Help Me
+    - 
   open: 0
 --- !u!1 &4697299555132748056 stripped
 GameObject:
@@ -857,7 +868,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4697299554765094258}
+      - m_Target: {fileID: 6629281328501696474}
         m_MethodName: Parse
         m_Mode: 0
         m_Arguments:
