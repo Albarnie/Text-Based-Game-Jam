@@ -21,4 +21,15 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    public void SetAlarm ()
+    {
+        foreach (Electronic electronic in GameManager.manager.electronics)
+        {
+            if(electronic is Alarm && !electronic.disabled)
+            {
+                ((Alarm)electronic).SetOff();
+            }
+        }
+    }
+
 }

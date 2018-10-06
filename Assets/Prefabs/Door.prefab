@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75d4d325157164b419c00d547c9aa9bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
   mouseOverDistance: 2
   parent: {fileID: 0}
 --- !u!1 &8064944787672387849
@@ -210,10 +211,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deviceName: Door
   id: 0
+  connected: 1
   sprites:
   - {fileID: 21300000, guid: 9eb19909610c9a04a90d501cba799113, type: 3}
   - {fileID: 21300004, guid: 9eb19909610c9a04a90d501cba799113, type: 3}
-  open: 0
+  disabled: 0
 --- !u!61 &8064944787672387861
 BoxCollider2D:
   m_ObjectHideFlags: 0
