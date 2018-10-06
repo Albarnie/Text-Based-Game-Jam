@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Electronic : MonoBehaviour
 {
+    [Multiline]
     public string deviceName;
     public int id;
 
