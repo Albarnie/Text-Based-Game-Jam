@@ -16,6 +16,7 @@ public class Alarm : Electronic
     public void SetOff ()
     {
         audioSource.Play();
+        GameManager.manager.enemyManager.Alert(transform.position, range, range * 2);
     }
 
     public override void Disable()
