@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Movement Settings")]
     public float speed = 6;
+    public float size = 1;
 
     [Header("Vision Settings")]
     public Vector3 startDirection;
@@ -88,16 +89,16 @@ public class Enemy : MonoBehaviour
             anim.SetBool("Aiming", false);
             infoAge = timeOutDuration;
         }
-        if(Vector3.Distance(transform.position, playerPos) > 2 && hasSeenPlayer)
+        if(Vector3.Distance(transform.position, playerPos) > 7 && hasSeenPlayer)
             Move();
         Rotate();
-        if (Vector3.Distance(transform.position, playerPos) > 5 && delay < Time.time && canSeePlayer && hasSeenPlayer && ammoInClip > 0)
+        if (delay < Time.time && canSeePlayer && hasSeenPlayer && ammoInClip > 0)
         {
             ammoInClip--;
             delay = Time.time + (1f / gun.RPS) + Random.Range(0, (0.5f / gun.RPS));
             Fire();
         }
-        else if (ammoInClip <=0 && delay < Time.time)
+        else if (ammoInClip <=0 && delay < Time.time && hasSeenPlayer)
         {
             delay = Time.time + gun.reloadTime;
             Reload();
@@ -139,10 +140,12 @@ public class Enemy : MonoBehaviour
         if (direction.x > 0)
         {
             transform.localScale = Vector3.right + Vector3.up + Vector3.forward;
+            transform.localScale *= size;
         }
         else if (direction.x < 0)
         {
             transform.localScale = Vector3.left + Vector3.up + Vector3.forward;
+            transform.localScale *= size;
         }
 
         if(input.sqrMagnitude > 1)
