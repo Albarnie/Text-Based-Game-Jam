@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &172358602847099056
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4644204243294954231}
+  - component: {fileID: 1839807595115359835}
+  m_Layer: 11
+  m_Name: GroundCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4644204243294954231
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172358602847099056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.94, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8319404765723253486}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1839807595115359835
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172358602847099056}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.3
 --- !u!1 &8319404764074465289
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +431,7 @@ Transform:
   - {fileID: 8319404764246766993}
   - {fileID: 8319404764074465288}
   - {fileID: 8319404764873155113}
+  - {fileID: 4644204243294954231}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -469,8 +517,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.89421916}
-  m_Size: {x: 0.61156183, y: 0.61156183}
+  m_Offset: {x: 0, y: -0.24520636}
+  m_Size: {x: 0.7299327, y: 1.9095874}
   m_Direction: 0
 --- !u!114 &8319404765723253484
 MonoBehaviour:
@@ -505,14 +553,14 @@ MonoBehaviour:
     name: Gun
     bulletPrefab: {fileID: 6642465936463778590, guid: 4ae7a43e99d854747a1d6dcaef6a0678, type: 3}
     RPS: 10
-    bulletVelocity: 30000
-    bulletDamage: 0
+    bulletVelocity: 20000
+    bulletDamage: 30
     bulletAmount: 0
-    bulletSpread: 10
+    bulletSpread: 15
     ammoPerClip: 16
     reloadTime: 2
     automatic: 0
-    shotShound: {fileID: 8300000, guid: 6542cb6a25616414cb0656e510f96d9c, type: 3}
+    shotShound: {fileID: 8300000, guid: d8c9cde888c5277448e41b6360030220, type: 3}
     reloadSound: {fileID: 0}
     noAmmoSound: {fileID: 0}
   shot: {fileID: 8319404765416997417}
@@ -556,7 +604,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 1.2835035
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0

@@ -107,5 +107,10 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    
+    public static bool Chance (float chance)
+    {
+        return chance > Random.value;
+    }
 
 }

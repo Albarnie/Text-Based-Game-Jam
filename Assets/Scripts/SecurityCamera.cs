@@ -17,7 +17,7 @@ public class SecurityCamera : Electronic
             detection += Time.deltaTime;
             if(detection > maxDetection)
             {
-                GameManager.manager.enemyManager.Alert(transform.position, 50, 100);
+                GameManager.manager.enemyManager.SetAlarm();
             }
         }
         else if (detection > 0)

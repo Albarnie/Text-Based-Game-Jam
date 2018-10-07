@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
 
     public void Die ()
     {
-
+        StartCoroutine(GameManager.manager.GoToScene(playerData.level));
     }
 
     void Fire ()

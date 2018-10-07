@@ -320,5 +320,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 417540613919633367, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
+      propertyPath: m_text
+      value: Mister Hecker
+      objectReference: {fileID: 0}
+    - target: {fileID: 417540613919633367, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 417540613919633367, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 417540613919633367, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4b3715214da97549a67c1bc6c830790, type: 3}

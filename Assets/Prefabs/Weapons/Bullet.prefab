@@ -221,17 +221,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun:
+    name: Gun
     bulletPrefab: {fileID: 0}
     RPS: 10
-    speed: 0
-    damage: 0
+    bulletVelocity: 25000
+    bulletDamage: 30
+    bulletAmount: 1
+    bulletSpread: 10
+    ammoPerClip: 16
+    reloadTime: 2
+    automatic: 0
     shotShound: {fileID: 0}
     reloadSound: {fileID: 0}
     noAmmoSound: {fileID: 0}
   mask:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 1025
   hitPrefab: {fileID: 521941104043054606, guid: a8762d06ea533bd4d9458647eb1fc27a, type: 3}
+  damage: 0
 --- !u!114 &4990685751570422557
 MonoBehaviour:
   m_ObjectHideFlags: 0

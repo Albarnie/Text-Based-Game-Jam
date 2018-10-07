@@ -30,6 +30,10 @@ public class Bullet : MonoBehaviour
             switch(hit.collider.tag)
             {
                 case "Enemy":
+                    hit.collider.GetComponent<Enemy>().Damage(gun.bulletDamage);
+                    break;
+                case "Player":
+                    hit.collider.GetComponent<Player>().Damage(gun.bulletDamage);
                     break;
             }
 

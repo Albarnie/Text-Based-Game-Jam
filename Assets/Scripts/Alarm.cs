@@ -15,7 +15,8 @@ public class Alarm : Electronic
 
     public void SetOff ()
     {
-        audioSource.Play();
+        if(!audioSource.isPlaying)
+            audioSource.Play();
         GameManager.manager.enemyManager.Alert(transform.position, range, range * 2);
     }
 
