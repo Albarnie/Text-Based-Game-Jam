@@ -162,15 +162,16 @@ public class ConsoleManager : MonoBehaviour
     #region Commands
     void Door(string[] arguments)
     {
-        if (GameManager.manager.electronics[int.Parse(arguments[2])] is Door && int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
+        int id = int.Parse(arguments[2]) - GameManager.manager.playerData.idPrefix;
+        if (GameManager.manager.electronics[id] is Door && id < GameManager.manager.electronics.Count)
         {
             switch (arguments[1])
             {
                 case "open":
-                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
+                    GameManager.manager.electronics[id].Disable();
                     break;
                 case "close":
-                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
+                    GameManager.manager.electronics[id].Enable();
                     break;
             }
         }
@@ -272,15 +273,16 @@ public class ConsoleManager : MonoBehaviour
 
     void Camera(string[] arguments)
     {
-        if (GameManager.manager.electronics[int.Parse(arguments[2])] is SecurityCamera && int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
+        int id = int.Parse(arguments[2]) - GameManager.manager.playerData.idPrefix;
+        if (GameManager.manager.electronics[id] is SecurityCamera && id < GameManager.manager.electronics.Count)
         {
             switch (arguments[1])
             {
                 case "enable":
-                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
+                    GameManager.manager.electronics[id].Enable();
                     break;
                 case "disable":
-                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
+                    GameManager.manager.electronics[id].Disable();
                     break;
             }
         }
@@ -288,18 +290,19 @@ public class ConsoleManager : MonoBehaviour
 
     void Alarm(string[] arguments)
     {
-        if (GameManager.manager.electronics[int.Parse(arguments[2])] is Alarm && int.Parse(arguments[2]) < GameManager.manager.electronics.Count)
+        int id = int.Parse(arguments[2]) - GameManager.manager.playerData.idPrefix;
+        if (GameManager.manager.electronics[id] is Alarm && id < GameManager.manager.electronics.Count)
         {
             switch (arguments[1])
             {
                 case "disable":
-                    GameManager.manager.electronics[int.Parse(arguments[2])].Disable();
+                    GameManager.manager.electronics[id].Disable();
                     break;
                 case "enable":
-                    GameManager.manager.electronics[int.Parse(arguments[2])].Enable();
+                    GameManager.manager.electronics[id].Enable();
                     break;
                 case "activate":
-                    ((Alarm)GameManager.manager.electronics[int.Parse(arguments[2])]).SetOff();
+                    ((Alarm)GameManager.manager.electronics[id]).SetOff();
                     break;
             }
         }
@@ -311,6 +314,7 @@ public class ConsoleManager : MonoBehaviour
 
     void OpenEmail(string[] arguments)
     {
+        int id = int.Parse(arguments[3]);
         if (arguments.Length == 4)
         {
             bool cont = true;
@@ -330,7 +334,7 @@ public class ConsoleManager : MonoBehaviour
                     if (password == emails[i].password.ToLower())
                     {
                         Print("Successfully logged in as '" + emails[i].username + "'.", PrintType.Info);
-                        Print(emails[i].emails[int.Parse(arguments[3])], PrintType.Info);
+                        Print(emails[i].emails[id], PrintType.Info);
                     }
                     else
                     {

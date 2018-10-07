@@ -12,7 +12,7 @@ public class SecurityCamera : Electronic
 
     private void Update()
     {
-        if(CanSeePlayer())
+        if(CanSeePlayer() && !disabled)
         {
             detection += Time.deltaTime;
             if(detection > maxDetection)
@@ -28,6 +28,8 @@ public class SecurityCamera : Electronic
 
     public bool CanSeePlayer ()
     {
+        Debug.DrawLine(transform.position, transform.position + (Quaternion.Euler(0, 0, FOV / 2) * (transform.localScale.x * Vector2.right)* 10));
+        Debug.DrawLine(transform.position, transform.position + (Quaternion.Euler(0, 0, -FOV / 2) * (transform.localScale.x * Vector2.right)* 10));
         Vector3 playerPos = GameManager.manager.player.transform.position;
         if (Vector3.Angle(transform.localScale * Vector2.right, playerPos - transform.position) < FOV/2)
         {

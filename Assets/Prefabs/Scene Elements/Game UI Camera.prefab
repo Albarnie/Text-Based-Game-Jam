@@ -1,21 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!4 &4697299554523686622 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 417540612658135941, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
-  m_PrefabInstance: {fileID: 4970654536784258395}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4048117290346104275 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 473807183019260023, guid: 3ea8d03d56f27e146ab3d2b6cfcbff9d, type: 3}
-  m_PrefabInstance: {fileID: 4521191973131287972}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1151317828245337734
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +460,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 473807181828523027, guid: 3ea8d03d56f27e146ab3d2b6cfcbff9d, type: 3}
   m_PrefabInstance: {fileID: 4521191973131287972}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4048117290346104275 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 473807183019260023, guid: 3ea8d03d56f27e146ab3d2b6cfcbff9d, type: 3}
+  m_PrefabInstance: {fileID: 4521191973131287972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &4697299554523686622 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 417540612658135941, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
+  m_PrefabInstance: {fileID: 4970654536784258395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4697299554765094256 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 417540614044391467, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
@@ -544,15 +544,51 @@ MonoBehaviour:
   - commandName: Email
     help: Access emails.
     useage: Email [username] [password] email number
-    authorised: 0
+    authorised: 1
   logins:
-  - username: Albarnie
-    password: Nook is silly
+  - username: S.Lambert
+    password: Caroline837
     priviledges: 0101010100
-  - username: Me
-    password: You bitch
+  - username: 1
+    password: 2
     priviledges: 0101010101
+  - username: camerasystem
+    password: Password123
+    priviledges: 0101010101
+  - username: xd
+    password: xd
+    priviledges: 01010101010101
   emails:
+  - username: Aquatic
+    password: FurryP123
+    emails:
+    - 
+    - 
+  - username: SteveLambert
+    password: Chelsea
+    emails:
+    - 'From: Administrator
+
+      To: Steve Lambert, Supervisor, Floor 1-5
+
+
+      This months password for the camera system:
+
+
+      ''Password123'''
+    - 'From: Steve Lambert
+
+      To: Dave Kaulstone
+
+
+      Hey, you''ve told me a couple of times about this guy you know.
+
+      Can you ask him about tickets to the next Chelsea Game?
+
+      They''re all out and i am willing to give anything for one!
+
+
+      -Steve'
   - username: Aquatic
     password: FurryP123
     emails:
@@ -1075,10 +1111,6 @@ PrefabInstance:
       propertyPath: m_firstOverflowCharacterIndex
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 473807183019260023, guid: 3ea8d03d56f27e146ab3d2b6cfcbff9d, type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ea8d03d56f27e146ab3d2b6cfcbff9d, type: 3}
 --- !u!1001 &4970654536784258395
@@ -1088,10 +1120,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 417540614044391478, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
-      propertyPath: menus.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8745985556894114907, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
       propertyPath: menus.Array.size
       value: 2
@@ -1168,11 +1196,11 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 417540614044391478, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
+    - target: {fileID: 8745985556894114907, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
       propertyPath: menus.Array.data[0]
       value: 
       objectReference: {fileID: 4697299555132748056}
-    - target: {fileID: 417540614044391478, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
+    - target: {fileID: 8745985556894114907, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
       propertyPath: menus.Array.data[1]
       value: 
       objectReference: {fileID: 6973589341380980052}
@@ -1372,14 +1400,9 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 8745985556894114907, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
-      propertyPath: menus.Array.data[0]
-      value: 
-      objectReference: {fileID: 4697299555132748056}
-    - target: {fileID: 8745985556894114907, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
-      propertyPath: menus.Array.data[1]
-      value: 
-      objectReference: {fileID: 6973589341380980052}
     m_RemovedComponents:
-    - {fileID: 4340492269618822938, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
+    - {fileID: 417540613711034634, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
+    - {fileID: 417540613919633366, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
+    - {fileID: 417540612562806034, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
+    - {fileID: 417540612297295447, guid: a4b3715214da97549a67c1bc6c830790, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a4b3715214da97549a67c1bc6c830790, type: 3}

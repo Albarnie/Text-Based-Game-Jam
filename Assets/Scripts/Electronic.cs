@@ -25,7 +25,7 @@ public class Electronic : MonoBehaviour
     {
         if (connected)
         {
-            id = GameManager.manager.electronics.Count;
+            id = GameManager.manager.electronics.Count + GameManager.manager.playerData.idPrefix;
             GameManager.manager.electronics.Add(this);
         }
     }

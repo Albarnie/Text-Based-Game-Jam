@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        targetPos = transform.position + Vector3.down;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         audioSources = GetComponents<AudioSource>();
@@ -53,7 +54,7 @@ public class Enemy : MonoBehaviour
             playerTime = 0;
         }
 
-        if(canSeePlayer && playerTime > 0.3)
+        if(canSeePlayer && playerTime > 0.4)
         {
             hasSeenPlayer = true;
             infoAge = 0;
@@ -83,7 +84,7 @@ public class Enemy : MonoBehaviour
         if(Vector3.Distance(transform.position, playerPos) > 2)
             Move();
         Rotate();
-        if (Vector3.Distance(transform.position, playerPos) > 5 && delay < Time.time && canSeePlayer)
+        if (Vector3.Distance(transform.position, playerPos) > 5 && delay < Time.time && canSeePlayer && hasSeenPlayer)
         {
             delay = Time.time + (1f / gun.RPS) + Random.Range(0, 0.3f);
             Fire();
@@ -155,6 +156,8 @@ public class Enemy : MonoBehaviour
 
     public void Damage (int amount)
     {
+        Debug.DrawLine(playerPos, transform.position, Color.green, 1);
+        Debug.Log(amount + ", " + health);
         health -= amount;
         if(health <= 0)
         {
@@ -164,14 +167,20 @@ public class Enemy : MonoBehaviour
 
     public void Die ()
     {
-        Destroy(gameObject);
+        anim.SetTrigger("Die");
+        GameManager.manager.enemyManager.enemies.Remove(this);
+        foreach(Collider2D col in GetComponentsInChildren<Collider2D>())
+        {
+            Destroy(col);
+        }
+        Destroy(this);
     }
 
     bool CanSeePlayer()
     {
         Debug.DrawLine(shot.position, shot.position + (shot.rotation * Vector2.right));
-        Debug.DrawLine(shot.position, shot.position + (Quaternion.Euler(0, 0, FOV / 2) * shot.rotation * Vector2.right));
-        Debug.DrawLine(shot.position, shot.position + (Quaternion.Euler(0, 0, -FOV / 2) * shot.rotation * Vector2.right));
+        Debug.DrawLine(shot.position, shot.position + (Quaternion.Euler(0, 0, FOV / 2) * shot.rotation * Vector2.right * 5));
+        Debug.DrawLine(shot.position, shot.position + (Quaternion.Euler(0, 0, -FOV / 2) * shot.rotation * Vector2.right * 5));
         if (Vector3.Angle(shot.rotation*Vector2.right, playerPos - transform.position) < FOV / 2)
         {
             RaycastHit2D hit = Physics2D.Linecast(shot.position, playerPos, visionMask);

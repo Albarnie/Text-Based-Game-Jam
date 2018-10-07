@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     Vector3 lastPos = Vector3.zero;
     public Gun gun;
     public LayerMask mask;
-    public GameObject hitPrefab;
+    public GameObject hitPrefab, bloodPrefab;
     int continues;
     public int damage;
 
@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
         RaycastHit2D hit = Physics2D.Linecast(lastPos, transform.position, mask);
         if(hit.collider != null)
         {
-            GetComponent<Rigidbody2D>().velocity *= 0.9f;
+
             Vector3 inPoint = hit.point;
             Vector3 outPoint = Physics2D.Linecast(transform.position, lastPos, mask).point;
             Instantiate(hitPrefab, inPoint, Quaternion.LookRotation(hit.normal));
@@ -30,12 +30,15 @@ public class Bullet : MonoBehaviour
             switch(hit.collider.tag)
             {
                 case "Enemy":
-                    hit.collider.GetComponent<Enemy>().Damage(gun.bulletDamage);
+                    Instantiate(bloodPrefab, outPoint, Quaternion.LookRotation(-hit.normal));
+                    hit.collider.GetComponent<Enemy>().Damage(gun.bulletDamage /(continues +1));
                     break;
                 case "Player":
-                    hit.collider.GetComponent<Player>().Damage(gun.bulletDamage);
+                    Instantiate(bloodPrefab, outPoint, Quaternion.LookRotation(-hit.normal));
+                    hit.collider.GetComponent<Player>().Damage(gun.bulletDamage /(continues +1));
                     break;
             }
+            GetComponent<Rigidbody2D>().velocity *= 0.9f;
 
             continues++;
         }

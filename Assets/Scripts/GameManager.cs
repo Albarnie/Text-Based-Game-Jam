@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     {
         public int health, level, gun;
         public int[] ammoInClip;
+        public int idPrefix;
     }
 
     [System.Serializable]
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         SceneManager.sceneLoaded += OnLevelLoad;
+        playerData.level = SceneManager.GetActiveScene().buildIndex;
     }
 
     public void Save ()
@@ -105,7 +107,8 @@ public class GameManager : MonoBehaviour
 
     void OnLevelLoad (Scene scene, LoadSceneMode mode)
     {
-
+        electronics.Clear();
+        playerData.idPrefix = Random.Range(0, 2000);
     }
     
     public static bool Chance (float chance)

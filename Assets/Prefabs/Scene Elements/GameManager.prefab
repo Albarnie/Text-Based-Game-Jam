@@ -109,7 +109,7 @@ MonoBehaviour:
     bulletPrefab: {fileID: 6642465936463778590, guid: 4ae7a43e99d854747a1d6dcaef6a0678, type: 3}
     RPS: 10
     bulletVelocity: 25000
-    bulletDamage: 50
+    bulletDamage: 20
     bulletAmount: 1
     bulletSpread: 4
     ammoPerClip: 16
@@ -122,7 +122,7 @@ MonoBehaviour:
     bulletPrefab: {fileID: 6642465936463778590, guid: 4ae7a43e99d854747a1d6dcaef6a0678, type: 3}
     RPS: 5
     bulletVelocity: 20000
-    bulletDamage: 10
+    bulletDamage: 5
     bulletAmount: 5
     bulletSpread: 10
     ammoPerClip: 8
@@ -135,7 +135,7 @@ MonoBehaviour:
     bulletPrefab: {fileID: 6642465936463778590, guid: 4ae7a43e99d854747a1d6dcaef6a0678, type: 3}
     RPS: 15
     bulletVelocity: 25000
-    bulletDamage: 30
+    bulletDamage: 5
     bulletAmount: 1
     bulletSpread: 5
     ammoPerClip: 24
@@ -145,7 +145,6 @@ MonoBehaviour:
     reloadSound: {fileID: 0}
     noAmmoSound: {fileID: 0}
   electronics: []
-  enemies: []
   playerData:
     health: 100
     level: 0

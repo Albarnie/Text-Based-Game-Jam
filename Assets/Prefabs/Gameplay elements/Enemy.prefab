@@ -129,7 +129,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300010, guid: 4b3b871c170603849b5460302da630d7, type: 3}
+  m_Sprite: {fileID: 21300014, guid: 53dfa5ae5538ea34c89ce1e95e6d787c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -259,7 +259,7 @@ MonoBehaviour:
   visionMask:
     serializedVersion: 2
     m_Bits: 1
-  FOV: 90
+  FOV: 45
   health: 100
   timeOutDuration: 15
   lastPlayerPos: {x: 0, y: 0, z: 0}
@@ -348,7 +348,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

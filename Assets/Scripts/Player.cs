@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
                 if(playerData.ammoInClip[playerData.gun] > 0)
                 {
                     delay = Time.time + (1f / gun.RPS);
-                    Debug.Log(1f / gun.RPS);
                     Fire();
                     GameManager.manager.playerData.ammoInClip[playerData.gun]--;
                 }
