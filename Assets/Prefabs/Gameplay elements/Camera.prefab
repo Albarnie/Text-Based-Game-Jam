@@ -141,4 +141,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deviceName: Security Camera
   id: 0
-  on: 0
+  connected: 1
+  sprites:
+  - {fileID: 21300004, guid: aaade1d9694f2a741adc5aabd50ab010, type: 3}
+  - {fileID: 21300006, guid: aaade1d9694f2a741adc5aabd50ab010, type: 3}
+  disabled: 0
+  visionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  FOV: 45
+  detection: 0
+  maxDetection: 1

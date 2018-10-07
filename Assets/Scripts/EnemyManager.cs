@@ -8,10 +8,10 @@ public class EnemyManager : MonoBehaviour
     private void Start()
     {
         GameManager.manager.enemyManager = this;
+        enemies = new List<Enemy>();
     }
 
-
-    public List<Enemy> enemies;
+    public List<Enemy> enemies = new List<Enemy>();
 
     public void Alert (Vector3 position, float soundRadius, float visualRadius)
     {

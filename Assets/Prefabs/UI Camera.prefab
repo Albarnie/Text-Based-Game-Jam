@@ -267,7 +267,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 417540614044391465}
+      - m_Target: {fileID: 0}
         m_MethodName: New
         m_Mode: 1
         m_Arguments:
@@ -494,7 +494,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 417540614044391465}
+      - m_Target: {fileID: 0}
         m_MethodName: New
         m_Mode: 1
         m_Arguments:
@@ -530,7 +530,6 @@ GameObject:
   m_Component:
   - component: {fileID: 417540612658135941}
   - component: {fileID: 417540612658135940}
-  - component: {fileID: 417540612658135943}
   - component: {fileID: 417540612658135942}
   m_Layer: 5
   m_Name: UI Camera
@@ -597,14 +596,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &417540612658135943
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417540612658135993}
-  m_Enabled: 1
 --- !u!114 &417540612658135942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,7 +856,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 417540614044391465}
+      - m_Target: {fileID: 0}
         m_MethodName: New
         m_Mode: 1
         m_Arguments:
@@ -1077,8 +1068,8 @@ GameObject:
   - component: {fileID: 417540614044391477}
   - component: {fileID: 417540614044391476}
   - component: {fileID: 417540614044391479}
-  - component: {fileID: 417540614044391478}
-  - component: {fileID: 417540614044391465}
+  - component: {fileID: 4340492269618822938}
+  - component: {fileID: 8745985556894114907}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1166,7 +1157,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &417540614044391478
+--- !u!114 &4340492269618822938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1175,22 +1166,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 417540614044391467}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f8393fd9715aa54fbef69b095900b4c, type: 3}
+  m_Script: {fileID: 11500000, guid: f61798659480eee47a9d95b5cc403f14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8745985556894114907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417540614044391467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22dbe5f29c76f94bbcb39922e8cd3e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   menus: []
---- !u!114 &417540614044391465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 417540614044391467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5053773d8108e534fa95c9926dfe724c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &417540614213342275
 GameObject:
   m_ObjectHideFlags: 0

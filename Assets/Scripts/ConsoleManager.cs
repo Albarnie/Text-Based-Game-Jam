@@ -232,9 +232,9 @@ public class ConsoleManager : MonoBehaviour
         {
             bool cont = true;
             int i = 0;
-            while (cont && i < emails.Length)
+            while (cont && i < logins.Length)
             {
-                if (arguments[1] == emails[i].username.ToLower())
+                if (arguments[1] == logins[i].username.ToLower())
                 {
                     string password = "";
                     for (int p = 2; p < arguments.Length; p++)
@@ -244,10 +244,17 @@ public class ConsoleManager : MonoBehaviour
                             password += " ";
                     }
 
-                    if (password == emails[i].password.ToLower())
+                    if (password == logins[i].password.ToLower())
                     {
-                        Print("Successfully logged in as '" + emails[i].username + "'.", PrintType.Info);
-                        Print(emails[i].emails[int.Parse(arguments[2])], PrintType.Info);
+                        Print("Successfully logged in as '" + logins[i].username + "'.", PrintType.Info);
+                        for (int ii = 0; ii < logins[i].priviledges.Length; ii++)
+                        {
+                            if (logins[i].priviledges[ii])
+                            {
+                                commands[ii].authorised = true;
+                            }
+                        }
+                        Print("Granted necessary priviledges.", PrintType.Info);
                     }
                     else
                     {
@@ -308,29 +315,22 @@ public class ConsoleManager : MonoBehaviour
         {
             bool cont = true;
             int i = 0;
-            while (cont && i < logins.Length)
+            while (cont && i < emails.Length)
             {
-                if (arguments[1] == logins[i].username.ToLower())
+                if (arguments[1] == emails[i].username.ToLower())
                 {
                     string password = "";
-                    for (int p = 2; p < arguments.Length; p++)
+                    for (int p = 2; p < arguments.Length -1; p++)
                     {
                         password += arguments[p];
-                        if (p < arguments.Length - 1)
+                        if (p < arguments.Length - 2)
                             password += " ";
                     }
 
-                    if (password == logins[i].password.ToLower())
+                    if (password == emails[i].password.ToLower())
                     {
-                        Print("Successfully logged in as '" + logins[i].username + "'.", PrintType.Info);
-                        for (int ii = 0; ii < logins[i].priviledges.Length; ii++)
-                        {
-                            if (logins[i].priviledges[ii])
-                            {
-                                commands[ii].authorised = true;
-                            }
-                        }
-                        Print("Granted necessary priviledges.", PrintType.Info);
+                        Print("Successfully logged in as '" + emails[i].username + "'.", PrintType.Info);
+                        Print(emails[i].emails[int.Parse(arguments[3])], PrintType.Info);
                     }
                     else
                     {
