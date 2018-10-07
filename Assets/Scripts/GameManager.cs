@@ -95,6 +95,11 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void Credits ()
+    {
+        StartCoroutine(GoToScene(1));
+    }
+
     public IEnumerator GoToScene (int level)
     {
         playerData.level = level;

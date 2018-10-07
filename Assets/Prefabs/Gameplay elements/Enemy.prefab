@@ -240,27 +240,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  gun:
-    name: Gun
-    bulletPrefab: {fileID: 8889014605663678247, guid: 5875a86d97db26d4aa386e25afbfa809, type: 3}
-    RPS: 5
-    bulletVelocity: 20000
-    bulletDamage: 30
-    bulletAmount: 1
-    bulletSpread: 15
-    ammoPerClip: 16
-    reloadTime: 2
-    automatic: 0
-    shotShound: {fileID: 8300000, guid: 04c979c177a5cdc448f630bc9ab98e5d, type: 3}
-    reloadSound: {fileID: 0}
-    noAmmoSound: {fileID: 0}
-  shot: {fileID: 1540031996}
-  gunPivot: {fileID: 1655970603}
   visionMask:
     serializedVersion: 2
     m_Bits: 1
   FOV: 45
-  health: 100
   timeOutDuration: 15
   lastPlayerPos: {x: 0, y: 0, z: 0}
   predictedPlayerPos: {x: 0, y: 0, z: 0}
@@ -270,6 +253,24 @@ MonoBehaviour:
   infoAge: 0
   hasSeenPlayer: 0
   canSeePlayer: 0
+  ammoInClip: 0
+  health: 100
+  gun:
+    name: Gun
+    bulletPrefab: {fileID: 8889014605663678247, guid: 5875a86d97db26d4aa386e25afbfa809, type: 3}
+    RPS: 5
+    bulletVelocity: 20000
+    bulletDamage: 5
+    bulletAmount: 1
+    bulletSpread: 15
+    ammoPerClip: 16
+    reloadTime: 2
+    automatic: 0
+    shotShound: {fileID: 8300000, guid: 6542cb6a25616414cb0656e510f96d9c, type: 3}
+    reloadSound: {fileID: 0}
+    noAmmoSound: {fileID: 8300000, guid: 748756da03683a94ea9e32cfa34c1e79, type: 3}
+  shot: {fileID: 1540031996}
+  gunPivot: {fileID: 1655970603}
   id: 0
 --- !u!50 &5559697352687496534
 Rigidbody2D:
@@ -283,8 +284,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 20
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -301,7 +302,7 @@ AudioSource:
   m_GameObject: {fileID: 5640040472928520069}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 243572814149256350, guid: d840dcd8026490443963f0f56b283fbb, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1

@@ -53,47 +53,47 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5640040472928520069, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
       propertyPath: m_Name
-      value: Enemy Shotgunner
+      value: Enemy Assault Rifle
       objectReference: {fileID: 0}
     - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
       propertyPath: gun.bulletSpread
-      value: 20
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
       propertyPath: gun.bulletAmount
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
       propertyPath: gun.bulletDamage
-      value: 2
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
+      propertyPath: gun.automatic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
       propertyPath: gun.RPS
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
       propertyPath: gun.bulletVelocity
-      value: 25000
+      value: 15000
+      objectReference: {fileID: 0}
+    - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
+      propertyPath: health
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
       propertyPath: gun.shotShound
       value: 
-      objectReference: {fileID: 8300000, guid: c64103a9d7580d740b4007ea717d56b2, type: 3}
-    - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
-      propertyPath: gun.ammoPerClip
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
-      propertyPath: ammoInClip
-      value: 8
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 1751f6553d4721245b0ab3c4a59da47a, type: 3}
     - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
       propertyPath: gun.reloadTime
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
       propertyPath: speed
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}

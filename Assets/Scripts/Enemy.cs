@@ -8,21 +8,27 @@ public class Enemy : MonoBehaviour
     AudioSource[] audioSources;
     Animator anim;
 
+    [Header("Movement Settings")]
     public float speed = 6;
 
-    public Gun gun;
-    public Transform shot, gunPivot;
+    [Header("Vision Settings")]
     public LayerMask visionMask;
     public int FOV = 45;
-    public int health = 100;
     public float timeOutDuration = 15;
-
     public Vector3 lastPlayerPos, predictedPlayerPos, lastPlayerSpeed, playerPos;
-    Vector3 targetPos, direction;
-    Vector2 input;
-    float rotation;
     public float playerTime, infoAge;
     public bool hasSeenPlayer, canSeePlayer;
+
+    float rotation;
+    Vector3 targetPos, direction;
+    Vector2 input;
+
+    [Header("Combat Settings")]
+    public int ammoInClip;
+    public int health = 100;
+    public Gun gun;
+    public Transform shot, gunPivot;
+
     float delay;
 
     public int id = 0;
@@ -84,10 +90,16 @@ public class Enemy : MonoBehaviour
         if(Vector3.Distance(transform.position, playerPos) > 2)
             Move();
         Rotate();
-        if (Vector3.Distance(transform.position, playerPos) > 5 && delay < Time.time && canSeePlayer && hasSeenPlayer)
+        if (Vector3.Distance(transform.position, playerPos) > 5 && delay < Time.time && canSeePlayer && hasSeenPlayer && ammoInClip > 0)
         {
+            ammoInClip--;
             delay = Time.time + (1f / gun.RPS) + Random.Range(0, 0.3f);
             Fire();
+        }
+        else if (ammoInClip <=0 && delay < Time.time)
+        {
+            delay = Time.time + gun.reloadTime;
+            Reload();
         }
     }
 
@@ -168,12 +180,22 @@ public class Enemy : MonoBehaviour
     public void Die ()
     {
         anim.SetTrigger("Die");
+        rb.drag = 5;
         GameManager.manager.enemyManager.enemies.Remove(this);
         foreach(Collider2D col in GetComponentsInChildren<Collider2D>())
         {
             Destroy(col);
         }
         Destroy(this);
+    }
+
+    void Reload()
+    {
+        Debug.Log("reload");
+        audioSources[0].clip = gun.reloadSound;
+        audioSources[0].pitch = Random.Range(0.8f, 1.2f);
+        audioSources[0].Play();
+        ammoInClip = gun.ammoPerClip;
     }
 
     bool CanSeePlayer()

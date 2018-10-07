@@ -20,4 +20,9 @@ public class MainMenuManager : MonoBehaviour
         GameManager.manager.Quit();
     }
 
+    public void Credits ()
+    {
+        GameManager.manager.Credits();
+    }
+
 }

@@ -26,12 +26,24 @@ public class SecurityCamera : Electronic
         }
     }
 
+    public override void Disable()
+    {
+        base.Disable();
+        transform.GetChild(1).gameObject.SetActive(false);
+    }
+
+    public override void Enable()
+    {
+        base.Enable();
+        transform.GetChild(1).gameObject.SetActive(true);
+    }
+
     public bool CanSeePlayer ()
     {
         Debug.DrawLine(transform.position, transform.position + (Quaternion.Euler(0, 0, FOV / 2) * (transform.localScale.x * Vector2.right)* 10));
         Debug.DrawLine(transform.position, transform.position + (Quaternion.Euler(0, 0, -FOV / 2) * (transform.localScale.x * Vector2.right)* 10));
         Vector3 playerPos = GameManager.manager.player.transform.position;
-        if (Vector3.Angle(transform.localScale * Vector2.right, playerPos - transform.position) < FOV/2)
+        if (Vector3.Angle(transform.localScale * Vector2.right, playerPos - transform.position) < FOV / 2 && Vector3.Distance(playerPos, transform.position) < 12.8)
         {
             RaycastHit2D hit = Physics2D.Linecast(transform.position, playerPos, visionMask);
             if(hit.collider == null)
