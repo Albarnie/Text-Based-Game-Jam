@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float speed = 6;
 
     [Header("Vision Settings")]
+    public Vector3 startDirection;
     public LayerMask visionMask;
     public int FOV = 45;
     public float timeOutDuration = 15;
@@ -20,8 +21,8 @@ public class Enemy : MonoBehaviour
     public bool hasSeenPlayer, canSeePlayer;
 
     float rotation;
-    Vector3 targetPos, direction;
-    Vector2 input;
+    Vector3 targetPos;
+    Vector2 input, direction;
 
     [Header("Combat Settings")]
     public int ammoInClip;
@@ -35,7 +36,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
-        targetPos = transform.position + Vector3.down;
+        targetPos = transform.position + startDirection;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         audioSources = GetComponents<AudioSource>();
@@ -60,7 +61,7 @@ public class Enemy : MonoBehaviour
             playerTime = 0;
         }
 
-        if(canSeePlayer && playerTime > 0.4)
+        if(canSeePlayer && playerTime > 0.3)
         {
             hasSeenPlayer = true;
             infoAge = 0;
@@ -87,13 +88,13 @@ public class Enemy : MonoBehaviour
             anim.SetBool("Aiming", false);
             infoAge = timeOutDuration;
         }
-        if(Vector3.Distance(transform.position, playerPos) > 2)
+        if(Vector3.Distance(transform.position, playerPos) > 2 && hasSeenPlayer)
             Move();
         Rotate();
         if (Vector3.Distance(transform.position, playerPos) > 5 && delay < Time.time && canSeePlayer && hasSeenPlayer && ammoInClip > 0)
         {
             ammoInClip--;
-            delay = Time.time + (1f / gun.RPS) + Random.Range(0, 0.3f);
+            delay = Time.time + (1f / gun.RPS) + Random.Range(0, (0.5f / gun.RPS));
             Fire();
         }
         else if (ammoInClip <=0 && delay < Time.time)
@@ -105,15 +106,12 @@ public class Enemy : MonoBehaviour
 
     public void Alert(Vector3 position, float soundRadius, float visualRadius)
     {
-        if (GameManager.Chance(Vector3.Distance(transform.position, position) / soundRadius))
+        if (GameManager.Chance(Vector3.Distance(transform.position, position) / soundRadius) || CanSeePlayer() && Vector3.Distance(transform.position, position) < visualRadius)
         {
+            infoAge = 0;
             hasSeenPlayer = true;
             lastPlayerPos = playerPos;
-        }
-        else if (CanSeePlayer())
-        {
-            lastPlayerPos = playerPos;
-            hasSeenPlayer = true;
+            targetPos = playerPos;
         }
     }
 
@@ -121,6 +119,22 @@ public class Enemy : MonoBehaviour
     {
         Debug.DrawLine(transform.position, targetPos);
 
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, shot.rotation * Vector2.right, 1, visionMask);
+        if(hit.collider != null)
+        {
+            float upDistance = Physics2D.Raycast(transform.position, shot.rotation * Vector2.up, 30, visionMask).distance;
+            float downDistance = Physics2D.Raycast(transform.position, shot.rotation * Vector2.down, 30, visionMask).distance;
+            if(upDistance > downDistance)
+            {
+                input = shot.rotation * Vector2.up;
+                //direction *= shot.rotation * Vector2.up;
+            }
+            else
+            {
+                input = shot.rotation * Vector2.down;
+                //direction *= shot.rotation * Vector2.down;
+            }
+        }
         direction.Normalize();
         if (direction.x > 0)
         {
@@ -135,6 +149,7 @@ public class Enemy : MonoBehaviour
         {
             input.Normalize();
         }
+        Debug.DrawLine(transform.position, transform.position + (Vector3)(input * 2));
         Vector2 velocity = input;
         velocity *= speed;
 

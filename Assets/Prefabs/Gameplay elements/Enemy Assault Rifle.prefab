@@ -95,5 +95,13 @@ PrefabInstance:
       propertyPath: speed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
+      propertyPath: gun.ammoPerClip
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
+      propertyPath: gun.reloadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 36a6acdb2be6bd1488d2207722d9eee7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}

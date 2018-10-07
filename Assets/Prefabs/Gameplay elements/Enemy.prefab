@@ -240,11 +240,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  startDirection: {x: 0, y: -1, z: 0}
   visionMask:
     serializedVersion: 2
     m_Bits: 1
-  FOV: 45
-  timeOutDuration: 15
+  FOV: 60
+  timeOutDuration: 5
   lastPlayerPos: {x: 0, y: 0, z: 0}
   predictedPlayerPos: {x: 0, y: 0, z: 0}
   lastPlayerSpeed: {x: 0, y: 0, z: 0}
@@ -263,11 +264,11 @@ MonoBehaviour:
     bulletDamage: 5
     bulletAmount: 1
     bulletSpread: 15
-    ammoPerClip: 16
+    ammoPerClip: 8
     reloadTime: 2
     automatic: 0
     shotShound: {fileID: 8300000, guid: 6542cb6a25616414cb0656e510f96d9c, type: 3}
-    reloadSound: {fileID: 0}
+    reloadSound: {fileID: 8300000, guid: 71242b42a12046e47823d77421b14a08, type: 3}
     noAmmoSound: {fileID: 8300000, guid: 748756da03683a94ea9e32cfa34c1e79, type: 3}
   shot: {fileID: 1540031996}
   gunPivot: {fileID: 1655970603}

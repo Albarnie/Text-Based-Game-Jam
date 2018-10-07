@@ -23,7 +23,8 @@ public class GameGUIManager : MonoBehaviour
 
     private void Update()
     {
-        worldNotify.transform.position = Vector3.Slerp(worldNotify.transform.position, notifyPos, 5 * Time.deltaTime);
+        if(worldNotify != null)
+            worldNotify.transform.position = Vector3.Slerp(worldNotify.transform.position, notifyPos, 5 * Time.deltaTime);
         if (Input.GetKeyDown("escape") && paused)
         {
             UnPause();
@@ -57,6 +58,13 @@ public class GameGUIManager : MonoBehaviour
     public void MainMenu ()
     {
         UnPause();
+        GameManager.manager.Save();
         StartCoroutine(GameManager.manager.GoToScene(0));
+    }
+
+    public void Credits ()
+    {
+        UnPause();
+        StartCoroutine(GameManager.manager.GoToScene(1));
     }
 }

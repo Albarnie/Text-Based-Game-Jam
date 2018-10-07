@@ -112,38 +112,38 @@ MonoBehaviour:
     bulletVelocity: 25000
     bulletDamage: 20
     bulletAmount: 1
-    bulletSpread: 4
+    bulletSpread: 5
     ammoPerClip: 16
     reloadTime: 2
     automatic: 0
     shotShound: {fileID: 8300000, guid: 04c979c177a5cdc448f630bc9ab98e5d, type: 3}
-    reloadSound: {fileID: 0}
+    reloadSound: {fileID: 8300000, guid: 71242b42a12046e47823d77421b14a08, type: 3}
     noAmmoSound: {fileID: 8300000, guid: 748756da03683a94ea9e32cfa34c1e79, type: 3}
   - name: Shotgun
     bulletPrefab: {fileID: 6642465936463778590, guid: 4ae7a43e99d854747a1d6dcaef6a0678, type: 3}
     RPS: 5
     bulletVelocity: 20000
-    bulletDamage: 5
+    bulletDamage: 30
     bulletAmount: 5
     bulletSpread: 10
     ammoPerClip: 8
     reloadTime: 2
     automatic: 0
     shotShound: {fileID: 8300000, guid: 817e60daf968c5546b04ea5084f47e64, type: 3}
-    reloadSound: {fileID: 0}
+    reloadSound: {fileID: 8300000, guid: 263bea976ce446c41b649b56a5747d10, type: 3}
     noAmmoSound: {fileID: 8300000, guid: 748756da03683a94ea9e32cfa34c1e79, type: 3}
   - name: Assault Rifle
     bulletPrefab: {fileID: 6642465936463778590, guid: 4ae7a43e99d854747a1d6dcaef6a0678, type: 3}
     RPS: 15
     bulletVelocity: 25000
-    bulletDamage: 5
+    bulletDamage: 20
     bulletAmount: 1
     bulletSpread: 5
     ammoPerClip: 24
     reloadTime: 2
     automatic: 1
     shotShound: {fileID: 8300000, guid: 1751f6553d4721245b0ab3c4a59da47a, type: 3}
-    reloadSound: {fileID: 0}
+    reloadSound: {fileID: 8300000, guid: 36a6acdb2be6bd1488d2207722d9eee7, type: 3}
     noAmmoSound: {fileID: 8300000, guid: 748756da03683a94ea9e32cfa34c1e79, type: 3}
   electronics: []
   playerData:
@@ -172,3 +172,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
+  spawner: {fileID: 0}

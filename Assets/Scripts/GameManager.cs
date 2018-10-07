@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
 
     public void Save ()
     {
+        Debug.Log("Save");
         saveData.playerData = playerData;
 
         BinaryFormatter bf = new BinaryFormatter();
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     public void Load ()
     {
+        Debug.Log("Load");
         if (File.Exists(Application.persistentDataPath + "/Save.Ts"))
         {
             BinaryFormatter bf = new BinaryFormatter();
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour
     public IEnumerator GoToScene (int level)
     {
         playerData.level = level;
+        playerData.health = 100;
         AsyncOperation sceneLoad = SceneManager.LoadSceneAsync(level);
         while (sceneLoad.progress < 1)
         {
@@ -113,6 +116,8 @@ public class GameManager : MonoBehaviour
     void OnLevelLoad (Scene scene, LoadSceneMode mode)
     {
         electronics.Clear();
+        if(enemyManager != null)
+            enemyManager.enemies.Clear();
         playerData.idPrefix = Random.Range(0, 2000);
     }
     
