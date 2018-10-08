@@ -6,7 +6,7 @@ using TMPro;
 public class GameGUIManager : MonoBehaviour
 {
     public GameObject worldNotify;
-    public TextMeshProUGUI notifyText;
+    public TextMeshProUGUI notifyText, ammoText, healthText, gunText;
     Vector3 notifyPos;
     public bool paused;
 
@@ -33,6 +33,9 @@ public class GameGUIManager : MonoBehaviour
         {
             Pause();
         }
+        healthText.text = GameManager.manager.playerData.health.ToString();
+        ammoText.text = GameManager.manager.playerData.ammoInClip[GameManager.manager.playerData.gun].ToString();
+        gunText.text = GameManager.manager.guns[GameManager.manager.playerData.gun].name;
     }
 
     public void Pause ()
@@ -45,7 +48,7 @@ public class GameGUIManager : MonoBehaviour
     public void UnPause()
     {
         paused = false;
-        GameManager.manager.menuManager.ChangeMenu(-1);
+        GameManager.manager.menuManager.ChangeMenu(2);
         Time.timeScale = 1;
     }
 

@@ -16,16 +16,16 @@ public class Electronic : MonoBehaviour
 
     public bool disabled;
 
-    private void Awake()
+    protected void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
     {
+            id = GameManager.manager.electronics.Count + GameManager.manager.playerData.idPrefix;
         if (connected)
         {
-            id = GameManager.manager.electronics.Count + GameManager.manager.playerData.idPrefix;
             GameManager.manager.electronics.Add(this);
         }
     }

@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [Header("Movement Settings")]
     public float speed = 6;
     public float size = 1;
+    public float viewSmoothing = 10;
 
     [Header("Vision Settings")]
     public Vector3 startDirection;
@@ -51,7 +52,6 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        canSeePlayer = CanSeePlayer();
         playerPos = GameManager.manager.player.transform.position;
         if(canSeePlayer)
         {
@@ -69,29 +69,37 @@ public class Enemy : MonoBehaviour
             targetPos = playerPos;
             lastPlayerSpeed = (playerPos - lastPlayerPos) /Time.deltaTime;
             lastPlayerPos = playerPos;
-            Debug.DrawLine(shot.position, playerPos, Color.green);
             input = lastPlayerPos - transform.position;
             targetPos = playerPos;
+
             anim.SetBool("Aiming", true);
+            Debug.DrawLine(shot.position, playerPos, Color.green);
         }
         else if (hasSeenPlayer && infoAge < timeOutDuration)
         {
             infoAge += Time.deltaTime;
             predictedPlayerPos = lastPlayerPos + (lastPlayerSpeed * infoAge);
-            Debug.DrawLine(shot.position, predictedPlayerPos, Color.yellow);
-            Debug.DrawLine(shot.position, lastPlayerPos, Color.red);
             input = lastPlayerPos - transform.position;
             targetPos = predictedPlayerPos;
+
             anim.SetBool("Aiming", true);
+            Debug.DrawLine(shot.position, predictedPlayerPos, Color.yellow);
+            Debug.DrawLine(shot.position, lastPlayerPos, Color.red);
         }
         else
         {
             anim.SetBool("Aiming", false);
             infoAge = timeOutDuration;
         }
-        if(Vector3.Distance(transform.position, playerPos) > 7 && hasSeenPlayer)
+        direction = targetPos - transform.position;
+
+        if (Vector3.Distance(transform.position, playerPos) > 7 && hasSeenPlayer)
+        {
             Move();
+        }
+
         Rotate();
+
         if (delay < Time.time && canSeePlayer && hasSeenPlayer && ammoInClip > 0)
         {
             ammoInClip--;
@@ -103,6 +111,7 @@ public class Enemy : MonoBehaviour
             delay = Time.time + gun.reloadTime;
             Reload();
         }
+        canSeePlayer = CanSeePlayer();
     }
 
     public void Alert(Vector3 position, float soundRadius, float visualRadius)
@@ -111,8 +120,9 @@ public class Enemy : MonoBehaviour
         {
             infoAge = 0;
             hasSeenPlayer = true;
-            lastPlayerPos = playerPos;
-            targetPos = playerPos;
+            lastPlayerPos = position;
+            targetPos = position;
+            canSeePlayer = true;
         }
     }
 
@@ -162,10 +172,9 @@ public class Enemy : MonoBehaviour
 
     void Rotate ()
     {
-        direction = targetPos - transform.position;
         rotation = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         gunPivot.localScale = transform.localScale;
-        gunPivot.rotation = Quaternion.Euler(0, 0, rotation);
+        gunPivot.rotation = Quaternion.Slerp(gunPivot.rotation, Quaternion.Euler(0, 0, rotation), viewSmoothing * Time.deltaTime);
         anim.SetFloat("Direction", Mathf.Atan2(direction.y, Mathf.Abs(direction.x)) * Mathf.Rad2Deg);
     }
 
@@ -204,6 +213,7 @@ public class Enemy : MonoBehaviour
         {
             Destroy(col);
         }
+        Destroy(gunPivot.gameObject);
         Destroy(this);
     }
 

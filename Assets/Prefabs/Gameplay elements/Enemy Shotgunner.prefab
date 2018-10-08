@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
       propertyPath: speed
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 812815772017476972, guid: 83e680153b2b3464b8f04ec82155ae07, type: 3}
       propertyPath: gun.reloadSound

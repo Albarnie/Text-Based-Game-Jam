@@ -10,6 +10,7 @@ public class Alarm : Electronic
 
     private void Awake()
     {
+        base.Awake();
         audioSource = GetComponent<AudioSource>();
     }
 

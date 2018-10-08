@@ -65,7 +65,7 @@ public class ConsoleManager : MonoBehaviour
         if (Input.GetKeyDown("`") && open)
         {
             open = false;
-            GameManager.manager.menuManager.ChangeMenu(-1);
+            GameManager.manager.menuManager.ChangeMenu(2);
         }
         else if (Input.GetKeyDown("`"))
         {
@@ -252,6 +252,8 @@ public class ConsoleManager : MonoBehaviour
                         {
                             if (logins[i].priviledges[ii])
                             {
+                                if(!commands[ii].authorised)
+                                    Print("Added new perms: " + commands[ii].commandName, PrintType.Info);
                                 commands[ii].authorised = true;
                             }
                         }
@@ -344,9 +346,33 @@ public class ConsoleManager : MonoBehaviour
                 i++;
             }
         }
-        else if (arguments.Length < 4)
+        else if (arguments.Length == 3)
         {
-            Print("Not enough arguments.", PrintType.Error);
+            bool cont = true;
+            int i = 0;
+            while (cont && i < emails.Length)
+            {
+                if (arguments[1] == emails[i].username.ToLower())
+                {
+                    string password = "";
+                    for (int p = 2; p < arguments.Length - 1; p++)
+                    {
+                        password += arguments[p];
+                        if (p < arguments.Length - 2)
+                            password += " ";
+                    }
+
+                    if (password == emails[i].password.ToLower())
+                    {
+                        Print("You have unread emails. (0 - " + (emails[i].emails.Length - 1), PrintType.Info);
+                    }
+                    else
+                    {
+                        Print("Incorrect password.", PrintType.Error);
+                    }
+                }
+                i++;
+            }
         }
     }
 

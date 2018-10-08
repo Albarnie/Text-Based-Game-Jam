@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
         audioSources[0].pitch = Random.Range(0.8f, 1.2f);
         audioSources[0].Play();
 
-        GameManager.manager.enemyManager.Alert(transform.position, 50, 100);
+        GameManager.manager.enemyManager.Alert(transform.position, 100, 200);
 
         for (int i = 0; i < gun.bulletAmount; i++)
         {

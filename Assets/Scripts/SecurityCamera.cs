@@ -9,6 +9,7 @@ public class SecurityCamera : Electronic
     public int FOV = 45;
     public float detection;
     public float maxDetection;
+    public Transform lense;
 
     private void Update()
     {
@@ -40,20 +41,26 @@ public class SecurityCamera : Electronic
 
     public bool CanSeePlayer ()
     {
-        Debug.DrawLine(transform.position, transform.position + (Quaternion.Euler(0, 0, FOV / 2) * (transform.localScale.x * Vector2.right)* 10));
-        Debug.DrawLine(transform.position, transform.position + (Quaternion.Euler(0, 0, -FOV / 2) * (transform.localScale.x * Vector2.right)* 10));
+        Debug.DrawLine(lense.position, lense.position + (Quaternion.Euler(0, 0, FOV / 2) * lense.rotation * (transform.localScale.x * Vector2.right)* 10));
+        Debug.DrawLine(lense.position, lense.position + (Quaternion.Euler(0, 0, -FOV / 2) * lense.rotation * (transform.localScale.x * Vector2.right)* 10));
         Vector3 playerPos = GameManager.manager.player.transform.position;
-        if (Vector3.Angle(transform.localScale * Vector2.right, playerPos - transform.position) < FOV / 2 && Vector3.Distance(playerPos, transform.position) < 12.8)
+        Vector3 dir = lense.rotation * (transform.localScale.x * Vector3.right);
+        Debug.DrawRay(transform.position, dir.normalized);
+        Debug.DrawRay(transform.position, (playerPos - lense.position).normalized);
+        //Debug.Log(Vector3.Angle(dir.normalized, (playerPos - lense.position).normalized));
+        //Debug.DrawLine(transform.position, transform.position + (Quaternion.Euler(0, 0, Vector3.Angle(dir.normalized, (playerPos - lense.position).normalized)) * Vector3.right * transform.localScale.x));
+        if (Vector3.Angle(dir.normalized, (playerPos - lense.position).normalized) < FOV / 2 && Vector3.Distance(playerPos, lense.position) < 12.8)
         {
-            RaycastHit2D hit = Physics2D.Linecast(transform.position, playerPos, visionMask);
+            Debug.Log("Small angle");
+            RaycastHit2D hit = Physics2D.Linecast(lense.position, playerPos, visionMask);
             if(hit.collider == null)
             {
-                Debug.DrawLine(transform.position, playerPos, Color.yellow);
+                Debug.DrawLine(lense.position, playerPos, Color.yellow);
                 return true;
             }
             else
             {
-                Debug.DrawLine(transform.position, hit.point, Color.red);
+                Debug.DrawLine(lense.position, hit.point, Color.red);
             }
         }
         return false;
