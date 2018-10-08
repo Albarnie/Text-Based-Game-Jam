@@ -11,7 +11,7 @@ public class SceneLoader : MonoBehaviour
         {
             GameManager.manager.playerData.level++;
             GameManager.manager.Save();
-            StartCoroutine(GameManager.manager.GoToScene(GameManager.manager.playerData.level + 1));
+            StartCoroutine(GameManager.manager.GoToScene(GameManager.manager.playerData.level));
         }
         else
         {
